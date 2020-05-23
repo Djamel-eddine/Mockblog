@@ -31,6 +31,9 @@ const Register = (props) => {
         response.status === 404
           ? setnewusername(true)
           : alert("this username is already exists");
+      })
+      .catch((err) => {
+        console.log(err);
       });
   };
   const checkemail = (e) => {
@@ -44,6 +47,9 @@ const Register = (props) => {
           response.status === 404
             ? setnewemail(true)
             : alert("this email is already exists");
+        })
+        .catch((err) => {
+          console.log(err);
         });
     } else {
       alert("You have entered an invalid email address!");
@@ -121,11 +127,14 @@ const Register = (props) => {
         response.status === 200
           ? alert("this email is already exists")
           : alert("registered");
+      })
+      .catch((err) => {
+        console.log(err);
       });
   };
 
   return (
-    <form onSubmit={sendRegisterRequest}>
+    <form onSubmit={sendRegisterRequest} action="/register">
       <label htmlFor="username">
         User Name:
         <input

@@ -39,12 +39,15 @@ const Login = (props) => {
         } else {
           alert("this account ain't exists");
         }
+      })
+      .catch((err) => {
+        console.log(err);
       });
   };
 
   return (
-    <form>
-      <label htmlFor="username" onSubmit={submitted}>
+    <form onSubmit={submitted} action="/login">
+      <label htmlFor="username">
         username
         <input
           type="text"
