@@ -1,0 +1,104 @@
+@import "buttons";
+@import "config";
+
+.register-container {
+  display: grid;
+  place-items: center center;
+
+  width: 100vw;
+  background-color: rgba($color: #3639da, $alpha: 0.02);
+  border-top: solid 2px $primary-color;
+
+  .form-container {
+    display: grid;
+    grid-template-columns: minmax(300px, 4fr) 3fr;
+    width: 80vw;
+    /* padding: 100px 0 150px; */
+    background-color: white;
+    box-shadow: 0 0 20px lighten($color: $secondary-color, $amount: 30%);
+
+    form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 30px;
+      padding: 100px 0px;
+      margin: 0 20px 0 80px;
+      /* place-content: center center; */
+      /* max-width: 500px; */
+      justify-content: stretch;
+      h2 {
+        grid-column: 1/-1;
+        font-family: $paragraph-font;
+        font-weight: 700;
+      }
+      input,
+      input:active {
+        @extend .button-type2;
+        z-index: 1;
+        grid-column: 1/-1;
+        padding: 10px;
+        height: 40px;
+        color: $secondary-color;
+        border-radius: 5px;
+        &:hover {
+          border-width: 1px;
+          padding: 10px;
+
+          border-left-width: 4px;
+          padding: 7px;
+          box-shadow: 0 0 10px rgba($color: $secondary-color, $alpha: 0.5);
+        }
+      }
+      input[type="submit"] {
+        grid-column: 2/3;
+        @extend .button-type1;
+        text-transform: capitalize;
+        font-size: small;
+        font-weight: 400;
+        padding: 5px 50px;
+      }
+      .tologin {
+        grid-column: 1/2;
+        display: grid;
+        place-items: center center;
+        font-family: $links-font;
+        font-size: small;
+        text-decoration: none;
+        color: $primary-color;
+      }
+    }
+    .image-container {
+      margin: 50px 10px;
+      width: 100%;
+      align-self: flex-start;
+      z-index: 2;
+      img {
+        width: 120%;
+      }
+    }
+  }
+  .shape1 {
+    position: absolute;
+    top: 200px;
+    left: -120px;
+    opacity: 20%;
+    height: 400px;
+    transform: rotate(20deg);
+  }
+  .shape2 {
+    position: absolute;
+    top: 400px;
+    right: -500px;
+    height: 750px;
+    opacity: 25%;
+    transform: rotate(10deg);
+  }
+  .shape3 {
+    position: absolute;
+    top: 700px;
+    left: -30px;
+    height: 200px;
+    opacity: 50%;
+    z-index: -1;
+  }
+}

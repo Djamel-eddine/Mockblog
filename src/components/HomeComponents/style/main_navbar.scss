@@ -1,0 +1,58 @@
+@import "config";
+@import "buttons";
+.btn1 {
+  @extend .button-type1;
+}
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  align-content: space-around;
+  /* place-items: center center; */
+  margin: 30px auto;
+  justify-content: space-between;
+  width: 90%;
+}
+
+.search {
+  display: grid;
+  grid-template-columns: 8fr 2fr;
+  align-items: end;
+  width: 350px;
+
+  input {
+    border: none;
+    border-bottom: solid 1px $secondary-color;
+    padding: 10px;
+    height: 30px;
+    margin-left: 20px;
+    font-size: medium;
+  }
+  label:hover {
+    cursor: pointer;
+  }
+}
+.navigation_menu {
+  .nav-item {
+    text-decoration: none;
+    color: $secondary-color-darker;
+    padding: 2px 0;
+    font-family: $links-font;
+    font-weight: 400;
+    margin-right: 30px;
+    text-transform: capitalize;
+    font-size: large;
+    &:hover {
+      border-bottom: solid 2px $secondary-color-darker;
+      font-weight: 700;
+    }
+    &:visited {
+      border-bottom: solid 2px $secondary-color-darker;
+    }
+  }
+  #trigger {
+    display: none;
+  }
+}
+.btn2 {
+  @extend .button-type2;
+}

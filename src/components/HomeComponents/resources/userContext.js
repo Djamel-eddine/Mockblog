@@ -6,7 +6,7 @@ export const UserContext = createContext();
 export const UserProvider = (props) => {
   const [User, setUser] = useState({
     id: null,
-    username: "",
+    username: "djamel",
     email: "",
     password: "",
     is_active: false,

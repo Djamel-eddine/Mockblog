@@ -1,0 +1,74 @@
+.footer {
+  display: -ms-grid;
+  display: grid;
+  position: relative;
+  height: 45vh;
+  width: 100vw;
+  background-color: #77c1fd;
+  place-items: center center;
+}
+
+.footer .container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+  width: 80vw;
+}
+
+.footer div {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  margin: 30px;
+}
+
+.footer div span {
+  font-family: "Lato", sans-serif;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.footer .navigation,
+.footer .subscription {
+  border-right: solid 2px white;
+}
+
+.footer .navigation .nav-item,
+.footer .subscription .nav-item {
+  text-decoration: none;
+  color: white;
+  padding: 10px 0;
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  margin-right: 30px;
+  text-transform: capitalize;
+  font-size: large;
+}
+
+.footer .navigation .nav-item:hover,
+.footer .subscription .nav-item:hover {
+  font-weight: 700;
+}
+
+.footer .social_media {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (auto)[4];
+      grid-template-columns: repeat(4, auto);
+  -ms-grid-rows: auto auto;
+      grid-template-rows: auto auto;
+  justify-items: center;
+  place-content: center;
+}
+
+.footer .social_media small {
+  grid-column: 1/-1;
+  font-family: "Lato", sans-serif;
+  font-size: smaller;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.footer .social_media a {
+  margin: 10px;
+}

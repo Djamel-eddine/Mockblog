@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect } from "react";
 import { UserContext } from "./resources/userContext";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import "./style/login.css";
 
 /* useEffect(() => {
   const token = window.localStorage.getItem("user");
@@ -17,6 +18,8 @@ import { Link } from "react-router-dom";
     });
 }, []); */
 
+/*  token in the header  */
+
 const Login = (props) => {
   /* states declaration */
   const [user, setuser] = useContext(UserContext);
@@ -27,8 +30,7 @@ const Login = (props) => {
   const submitted = (e) => {
     e.preventDefault();
     axios
-      .post("/login", {
-        check: "submit",
+      .post("api/v1/login", {
         username,
         password,
       })
@@ -46,45 +48,81 @@ const Login = (props) => {
   };
 
   return (
-    <form onSubmit={submitted} action="/login">
-      <label htmlFor="username">
-        username
-        <input
-          type="text"
-          name="username"
-          id="username"
-          placeholder="User Name"
-          value={username}
-          onChange={(e) => {
-            setusername(e.target.value);
-            username !== "" && password.length > 4
-              ? setcouldsubmit(true)
-              : setcouldsubmit(false);
-          }}
-        />
-      </label>
-      <br />
-      <label htmlFor="username">
-        username
-        <input
-          type="password"
-          name="password"
-          id="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => {
-            setpassword(e.target.value);
-            username !== "" && password.length > 4
-              ? setcouldsubmit(true)
-              : setcouldsubmit(false);
-          }}
-        />
-      </label>
-      <br />
-      <Link to="/register">not a member yet!!</Link>
-      <br />
-      <input type="submit" value="login" disabled={!couldsubmit} />
-    </form>
+    <div className="register-container login-container">
+      <img
+        className="shape shape1"
+        src="resources/svgs/outline_rectangle.svg"
+        alt="shape1"
+      />
+      <img
+        className="shape shape2"
+        src="resources/svgs/outline_rectangle.svg"
+        alt="shape3"
+      />
+      <img
+        className="shape shape3"
+        src="resources/svgs/orange_Ellipse.svg"
+        alt="shape2"
+      />
+      <div className="form-container">
+        <form onSubmit={submitted} action="/login">
+          <h2>Login</h2>
+          <input
+            type="text"
+            name="username"
+            id="username"
+            placeholder="User Name"
+            value={username}
+            onChange={(e) => {
+              setusername(e.target.value);
+              username !== "" && password.length > 4
+                ? setcouldsubmit(true)
+                : setcouldsubmit(false);
+            }}
+          />
+          <input
+            type="password"
+            name="password"
+            id="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => {
+              setpassword(e.target.value);
+              username !== "" && password.length > 4
+                ? setcouldsubmit(true)
+                : setcouldsubmit(false);
+            }}
+          />
+          <Link className="toreset" to="/reset_password">
+            forget password!!
+          </Link>
+          <div className="login">
+            <div className="reminder">
+              <input type="checkbox" name="reminder" id="reminder" />
+              <label htmlFor="reminder">Remember me</label>
+            </div>
+
+            <input
+              id="login"
+              type="submit"
+              value="login"
+              disabled={!couldsubmit}
+            />
+          </div>
+
+          <div className="separation"></div>
+          <div className="tologin-container">
+            Don't have an account?
+            <Link className="toregister" to="/register">
+              Register now
+            </Link>
+          </div>
+        </form>
+        <div className="image-container">
+          <img src="resources\svgs\login_ill.svg" alt="register" />
+        </div>
+      </div>
+    </div>
   );
 };
 

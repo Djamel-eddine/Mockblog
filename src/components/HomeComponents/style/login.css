@@ -1,0 +1,259 @@
+.button-type1, .register-container .form-container form input[type="submit"],
+.button-type1:active,
+.register-container .form-container form input:active[type="submit"] {
+  /* height: $height;
+  width: $width; */
+  color: white;
+  text-transform: capitalize;
+  border: none;
+  background-color: #659ffe;
+  padding: 5px 30px;
+  font-family: "Lato", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.button-type1:hover, .register-container .form-container form input:hover[type="submit"], .button-type1:disabled, .register-container .form-container form input:disabled[type="submit"],
+.button-type1:active:hover,
+.register-container .form-container form input:active:hover[type="submit"],
+.button-type1:active:disabled,
+.register-container .form-container form input:active:disabled[type="submit"] {
+  cursor: pointer;
+  background-color: #7eaffe;
+}
+
+.button-type1:disabled, .register-container .form-container form input:disabled[type="submit"],
+.button-type1:active:disabled,
+.register-container .form-container form input:active:disabled[type="submit"] {
+  cursor: alias;
+}
+
+.button-type2, .register-container .form-container form input,
+.register-container .form-container form input:active,
+.button-type2:active,
+.register-container .form-container form input:active {
+  /* height: $height;
+  width: $width; */
+  color: #659ffe;
+  text-transform: capitalize;
+  border: solid 1px #659ffe;
+  background-color: white;
+  padding: 10px;
+  font-family: "Lato", sans-serif;
+  font-weight: 700;
+}
+
+.button-type2:hover, .register-container .form-container form input:hover,
+.button-type2:active:hover,
+.register-container .form-container form input:active:hover {
+  border-width: 2px;
+  padding: 9px;
+}
+
+.button-type2:disabled, .register-container .form-container form input:disabled,
+.button-type2:active:disabled,
+.register-container .form-container form input:active:disabled {
+  background-color: white;
+}
+
+.register-container {
+  display: -ms-grid;
+  display: grid;
+  place-items: center center;
+  width: 100vw;
+  background-color: rgba(54, 57, 218, 0.02);
+  border-top: solid 2px #659ffe;
+}
+
+.register-container .form-container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: minmax(300px, 4fr) 3fr;
+      grid-template-columns: minmax(300px, 4fr) 3fr;
+  width: 80vw;
+  margin: 100px 0 150px;
+  background-color: white;
+  -webkit-box-shadow: 0 0 20px #c6cdd3;
+          box-shadow: 0 0 20px #c6cdd3;
+}
+
+.register-container .form-container form {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  grid-gap: 30px;
+  padding-bottom: 100px 50px;
+  margin: 0 20px 0 80px;
+  /* place-content: center center; */
+  /* max-width: 500px; */
+  -webkit-box-pack: stretch;
+      -ms-flex-pack: stretch;
+          justify-content: stretch;
+}
+
+.register-container .form-container form h2 {
+  grid-column: 1/-1;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+}
+
+.register-container .form-container form input,
+.register-container .form-container form input:active {
+  z-index: 1;
+  grid-column: 1/-1;
+  padding: 10px;
+  height: 40px;
+  color: #6f8191;
+  border-radius: 5px;
+}
+
+.register-container .form-container form input:hover,
+.register-container .form-container form input:active:hover {
+  border-width: 1px;
+  padding: 10px;
+  border-left-width: 4px;
+  padding: 7px;
+  -webkit-box-shadow: 0 0 10px rgba(111, 129, 145, 0.5);
+          box-shadow: 0 0 10px rgba(111, 129, 145, 0.5);
+}
+
+.register-container .form-container form input[type="submit"] {
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-column: 2/3;
+  text-transform: capitalize;
+  font-size: small;
+  font-weight: 400;
+  padding: 5px 50px;
+}
+
+.register-container .form-container form .tologin {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 1;
+  grid-column: 1/2;
+  display: -ms-grid;
+  display: grid;
+  place-items: center center;
+  font-family: "Lato", sans-serif;
+  font-size: small;
+  text-decoration: none;
+  color: #659ffe;
+}
+
+.register-container .form-container .image-container {
+  margin: 50px 10px;
+  width: 100%;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  z-index: 2;
+}
+
+.register-container .form-container .image-container img {
+  width: 120%;
+}
+
+.register-container .shape1 {
+  position: absolute;
+  top: 200px;
+  left: -120px;
+  opacity: 20%;
+  height: 400px;
+  -webkit-transform: rotate(20deg);
+          transform: rotate(20deg);
+}
+
+.register-container .shape2 {
+  position: absolute;
+  top: 400px;
+  right: -500px;
+  height: 750px;
+  opacity: 25%;
+  -webkit-transform: rotate(10deg);
+          transform: rotate(10deg);
+}
+
+.register-container .shape3 {
+  position: absolute;
+  top: 700px;
+  left: -30px;
+  height: 200px;
+  opacity: 50%;
+  z-index: -1;
+}
+
+.login-container form {
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+.login-container input {
+  margin-top: 10px;
+  height: 50px !important;
+}
+
+.login-container input[type="submit"] {
+  height: 30px !important;
+  margin-bottom: 0px !important;
+}
+
+.login-container .login {
+  grid-column: 1/-1;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 5fr 3fr;
+      grid-template-columns: 5fr 3fr;
+}
+
+.login-container .login .reminder {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-align: center !important;
+      -ms-flex-align: center !important;
+          align-items: center !important;
+}
+
+.login-container .login .reminder input {
+  margin: 0;
+  padding: 0;
+  margin-right: 10px;
+  display: -ms-grid;
+  display: grid;
+  place-items: center center;
+}
+
+.login-container .tologin-container {
+  font-family: "Lato", sans-serif;
+  grid-column: 1/-1;
+}
+
+.login-container .tologin-container .toregister {
+  text-decoration: none;
+  color: #659ffe;
+  padding-left: 10px;
+}
+
+.login-container .separation {
+  margin: 20px 0 0px;
+  grid-column: 1/-1;
+  height: 0px;
+  border-top: solid 1px #6f8191;
+  -webkit-box-shadow: 0 0 2px #6f8191;
+          box-shadow: 0 0 2px #6f8191;
+}
+
+.login-container .toreset {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-column: 1/3;
+  place-items: center center;
+  font-family: "Lato", sans-serif;
+  font-size: small;
+  text-decoration: none;
+  color: #659ffe;
+}

@@ -1,0 +1,119 @@
+.button-type1, .btn1,
+.button-type1:active,
+.btn1:active {
+  /* height: $height;
+  width: $width; */
+  color: white;
+  text-transform: capitalize;
+  border: none;
+  background-color: #659ffe;
+  padding: 5px 30px;
+  font-family: "Lato", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.button-type1:hover, .btn1:hover, .button-type1:disabled, .btn1:disabled,
+.button-type1:active:hover,
+.btn1:active:hover,
+.button-type1:active:disabled,
+.btn1:active:disabled {
+  cursor: pointer;
+  background-color: #7eaffe;
+}
+
+.button-type1:disabled, .btn1:disabled,
+.button-type1:active:disabled,
+.btn1:active:disabled {
+  cursor: alias;
+}
+
+.button-type2, .btn2,
+.button-type2:active,
+.btn2:active {
+  /* height: $height;
+  width: $width; */
+  color: #659ffe;
+  text-transform: capitalize;
+  border: solid 1px #659ffe;
+  background-color: white;
+  padding: 10px;
+  font-family: "Lato", sans-serif;
+  font-weight: 700;
+}
+
+.button-type2:hover, .btn2:hover,
+.button-type2:active:hover,
+.btn2:active:hover {
+  border-width: 2px;
+  padding: 9px;
+}
+
+.button-type2:disabled, .btn2:disabled,
+.button-type2:active:disabled,
+.btn2:active:disabled {
+  background-color: white;
+}
+
+.container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (auto)[3];
+      grid-template-columns: repeat(3, auto);
+  -ms-flex-line-pack: distribute;
+      align-content: space-around;
+  /* place-items: center center; */
+  margin: 30px auto;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 90%;
+}
+
+.search {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 8fr 2fr;
+      grid-template-columns: 8fr 2fr;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: end;
+  width: 350px;
+}
+
+.search input {
+  border: none;
+  border-bottom: solid 1px #6f8191;
+  padding: 10px;
+  height: 30px;
+  margin-left: 20px;
+  font-size: medium;
+}
+
+.search label:hover {
+  cursor: pointer;
+}
+
+.navigation_menu .nav-item {
+  text-decoration: none;
+  color: #1a1e23;
+  padding: 2px 0;
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  margin-right: 30px;
+  text-transform: capitalize;
+  font-size: large;
+}
+
+.navigation_menu .nav-item:hover {
+  border-bottom: solid 2px #1a1e23;
+  font-weight: 700;
+}
+
+.navigation_menu .nav-item:visited {
+  border-bottom: solid 2px #1a1e23;
+}
+
+.navigation_menu #trigger {
+  display: none;
+}

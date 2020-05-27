@@ -2,6 +2,7 @@ import React, { /* useContext,  */ useState, useEffect } from "react";
 /* import { UserContext } from "./resources/userContext"; */
 import axios from "axios";
 import { Link } from "react-router-dom";
+import register from "./style/register.css";
 
 const Register = (props) => {
   /* states declaration */
@@ -23,12 +24,9 @@ const Register = (props) => {
   /* methods declaration */
   const checkusename = (e) => {
     axios
-      .post("/register", {
-        check: "username",
-        username,
-      })
+      .post(`/api/v1/register?username=${username}`)
       .then((response) => {
-        response.status === 404
+        response.status === 200
           ? setnewusername(true)
           : alert("this username is already exists");
       })
@@ -39,12 +37,9 @@ const Register = (props) => {
   const checkemail = (e) => {
     if (/^\w+([-]?\w+)*@\w+([-]?\w+)*(\.\w{2,3})+$/.test(email)) {
       axios
-        .post("/register", {
-          check: "email",
-          email,
-        })
+        .post(`/api/v1/register?username=${email}`)
         .then((response) => {
-          response.status === 404
+          response.status === 200
             ? setnewemail(true)
             : alert("this email is already exists");
         })
@@ -117,14 +112,13 @@ const Register = (props) => {
   const sendRegisterRequest = (e) => {
     e.preventDefault();
     axios
-      .post("/register", {
-        check: "submit",
+      .post("api/v1/register", {
         username,
         email,
         password,
       })
       .then((response) => {
-        response.status === 200
+        response.status === 201
           ? alert("this email is already exists")
           : alert("registered");
       })
@@ -132,65 +126,89 @@ const Register = (props) => {
         console.log(err);
       });
   };
-
+  /* 201 created 
+409 conflict
+400 bad request */
   return (
-    <form onSubmit={sendRegisterRequest} action="/register">
-      <label htmlFor="username">
-        User Name:
-        <input
-          type="text"
-          name="username"
-          placeholder="User Name"
-          id="username"
-          value={username}
-          onChange={(e) => {
-            setusername(e.target.value);
-          }}
-          onBlur={checkusename}
-        />
-      </label>
-      <br />
-      <label htmlFor="email">
-        Email:
-        <input
-          type="email"
-          name="email"
-          id="email"
-          placeholder="Email"
-          onChange={(e) => {
-            setemail(e.target.value);
-          }}
-          onBlur={checkemail}
-        />
-      </label>
-      <br />
-      <label htmlFor="password">
-        Password:
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          id="password"
-          onChange={checkpasswordMatch}
-          /* onBlur={checkpasswordMatch} */
-        />
-      </label>
-      <br />
-      <label htmlFor="passwordConfirmation">
-        Confirm Password:
-        <input
-          type="password"
-          name="passwordConfirmation"
-          placeholder="confirm Password"
-          id="passwordConfirmation"
-          onChange={checkpasswordConfirmation}
-        />
-      </label>
-      <br />
-      <Link to="/login">you're a blogger already!!</Link>
-      <br />
-      <input type="submit" value="register" disabled={!couldsubmit} />
-    </form>
+    <div className="register-container">
+      <img
+        className="shape shape1"
+        src="resources/svgs/outline_rectangle.svg"
+        alt="shape1"
+      />
+      <img
+        className="shape shape2"
+        src="resources/svgs/outline_rectangle.svg"
+        alt="shape3"
+      />
+      <img
+        className="shape shape3"
+        src="resources/svgs/orange_Ellipse.svg"
+        alt="shape2"
+      />
+      <div className="form-container">
+        <form onSubmit={sendRegisterRequest} action="/register">
+          <h2>Register</h2>
+          <input
+            type="text"
+            name="username"
+            placeholder="User name"
+            id="username"
+            value={username}
+            onChange={(e) => {
+              setusername(e.target.value);
+            }}
+            onBlur={checkusename}
+          />
+
+          <input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="Email"
+            onChange={(e) => {
+              setemail(e.target.value);
+            }}
+            onBlur={checkemail}
+          />
+
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            id="password"
+            onChange={checkpasswordMatch}
+            /* onBlur={checkpasswordMatch} */
+          />
+
+          <input
+            type="password"
+            name="passwordConfirmation"
+            placeholder="confirm Password"
+            id="passwordConfirmation"
+            onChange={checkpasswordConfirmation}
+          />
+
+          <Link className="tologin" to="/login">
+            you're a blogger already!!
+          </Link>
+
+          <input
+            className="btn1"
+            type="submit"
+            value="register"
+            disabled={!couldsubmit}
+          />
+        </form>
+        <div className="image-container">
+          <img
+            src="resources\svgs\register_ill.svg"
+            alt="register"
+            width="500px"
+          />
+        </div>
+      </div>
+    </div>
   );
 };
 export default Register;
