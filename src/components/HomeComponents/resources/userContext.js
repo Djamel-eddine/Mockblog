@@ -4,26 +4,33 @@ import React from "react";
 export const UserContext = createContext();
 
 export const UserProvider = (props) => {
-  const [User, setUser] = useState({
+  const [islogged, setislogged] = useState(true);
+  const [user, setuser] = useState({
     id: null,
-    username: "djamel",
+    username: "ghadj",
+    nickname: "", //added
     email: "",
     password: "",
     is_active: false,
     is_blogger: "",
     profile: {
-      firstname: "",
-      lastname: "",
+      firstname: "ghadjati",
+      lastname: "oussama",
       date_of_birth: "",
       bio: "",
       followers: [],
+      follows: [], //added
+      posts: [],
       specializations: [],
     },
     created_at: "",
     updated_at: "",
+    token: "", //added
   });
   return (
-    <UserContext.Provider value={[User, setUser]}>
+    <UserContext.Provider
+      value={{ user: [user, setuser], islogged: [islogged, setislogged] }}
+    >
       {props.children}
     </UserContext.Provider>
   );

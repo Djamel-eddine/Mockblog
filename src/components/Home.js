@@ -8,13 +8,13 @@ import Footer from "./HomeComponents/footer";
 import About from "./about";
 import Error from "./error";
 import Contact from "./contact";
-import Profile from "./profile";
+import Profile from "./HomeComponents/profile";
 import Blog from "./blog";
 import Article from "./article";
 import Confirm from "./HomeComponents/confirm";
 import Main from "./HomeComponents/main";
 import Reset from "./HomeComponents/reset-pass";
-import EditProfile from "./edit-profile";
+import EditProfile from "./HomeComponents/edit-profile";
 
 const Home = (props) => {
   return (
@@ -31,8 +31,12 @@ const Home = (props) => {
 
           <Route exact path="/blog" component={Blog} />
           <Route exact path="/reset_password" component={Reset} />
-          <Route exact path="/edit_profile/:id" component={EditProfile} />
-          <Route exact path="/profile/:id" component={Profile} />
+          <Route
+            exact
+            path="/edit_profile/user=:user"
+            component={EditProfile}
+          />
+          <Route exact path="/profile/user=:user" component={Profile} />
           <Route exact path="/article/:id" component={Article} />
           <Route component={Error} />
         </Switch>

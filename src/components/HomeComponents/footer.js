@@ -17,7 +17,7 @@ const Footer = () => {
       <div className="container">
         <div className="subscription">
           <Link className="nav-item" to="/">
-            <img src="#" alt="logo" />
+            <img src="resources/search.png" alt="logo" />
           </Link>
           <Link className="nav-item" to="/register">
             Get started
@@ -64,7 +64,7 @@ const Footer = () => {
             <img src="resources\gmail.png" alt="gmail" height="33px" />
           </a>
 
-          <small>&copy; copyright 2020</small>
+          <small>&copy; Soft Brew copyright 2020</small>
         </div>
       </div>
     </div>

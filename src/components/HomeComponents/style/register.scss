@@ -1,13 +1,5 @@
-@import "buttons";
-@import "config";
-
 .register-container {
-  display: grid;
-  place-items: center center;
-
-  width: 100vw;
-  background-color: rgba($color: #3639da, $alpha: 0.02);
-  border-top: solid 2px $primary-color;
+  @include container();
 
   .form-container {
     display: grid;
@@ -102,3 +94,5 @@
     z-index: -1;
   }
 }
+@import "buttons";
+@import "config";

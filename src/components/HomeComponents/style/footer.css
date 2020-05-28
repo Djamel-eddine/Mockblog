@@ -1,8 +1,22 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: none;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  width: 100vw;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
 .footer {
   display: -ms-grid;
   display: grid;
   position: relative;
-  height: 45vh;
+  height: 320px;
   width: 100vw;
   background-color: #77c1fd;
   place-items: center center;

@@ -1,0 +1,138 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: none;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  width: 100vw;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.main-profile-container {
+  display: -ms-grid;
+  display: grid;
+  place-items: center center;
+  width: 100vw;
+  background-color: rgba(54, 57, 218, 0.02);
+  border-top: solid 2px #1592e6;
+}
+
+.main-profile-container .profile-container {
+  display: -ms-grid;
+  display: grid;
+  margin: 100px 0;
+  width: 80vw;
+  -ms-grid-columns: 1fr 2fr;
+      grid-template-columns: 1fr 2fr;
+  grid-gap: 30px;
+}
+
+.main-profile-container .profile-container .addingpost {
+  grid-column: 1/-1;
+  justify-self: flex-end;
+  padding: 10px 75px;
+  text-transform: capitalize;
+  font-weight: 400;
+  font-size: 18px;
+}
+
+.main-profile-container .profile-container .my-infos {
+  display: -ms-grid;
+  display: grid;
+}
+
+.main-profile-container .profile-container .my-infos .header {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 100px 1fr;
+      grid-template-columns: 100px 1fr;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.main-profile-container .profile-container .my-infos .header img {
+  height: 100px;
+  width: 100px;
+  border-radius: 100px;
+  -webkit-box-shadow: 0 0 10px #6f8191;
+          box-shadow: 0 0 10px #6f8191;
+}
+
+.main-profile-container .profile-container .my-infos .header h1 {
+  padding-left: 20px;
+  font-family: "Merriweather", serif;
+  text-transform: capitalize;
+}
+
+.main-profile-container .profile-container .my-infos .body {
+  font-family: "Merriweather", serif;
+  text-transform: capitalize;
+  margin-left: 50px;
+  border-left: solid 1px #1592e6;
+  padding-left: 20px;
+}
+
+.main-profile-container .profile-container .my-infos .body h2 {
+  margin: 0;
+  padding: o;
+}
+
+.main-profile-container .profile-container .my-infos .body ul {
+  padding: 0;
+  margin: 0;
+}
+
+.main-profile-container .profile-container .my-infos .body ul li {
+  list-style-type: none;
+  color: #6f8191;
+  font-family: "Lato", sans-serif;
+  margin-top: 10px;
+}
+
+.main-profile-container .profile-container .my-infos button {
+  margin-top: 30px;
+  width: 80%;
+  padding: 10px;
+  text-transform: capitalize;
+  font-weight: 400;
+  font-size: 20px;
+}
+
+.main-profile-container .profile-container .posts-area {
+  background-color: white;
+  -webkit-box-shadow: 0 0 20px rgba(111, 129, 145, 0.8);
+          box-shadow: 0 0 20px rgba(111, 129, 145, 0.8);
+}
+
+.main-profile-container .profile-container .posts-area .header {
+  height: 50px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  justify-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  padding: 0 25%;
+  border-bottom: solid 2px #6f8191;
+}
+
+.main-profile-container .profile-container .posts-area .header button {
+  border: none;
+  background-color: white;
+  font-family: "Lato", sans-serif;
+  color: #6f8191;
+  font-size: 25px;
+  font-weight: 700;
+  padding: 0 20px;
+}
+
+.main-profile-container .profile-container .posts-area .header button:hover {
+  border-bottom: solid 2px #1592e6;
+}

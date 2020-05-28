@@ -7,10 +7,7 @@ import "./style/login.css";
 /* useEffect(() => {
   const token = window.localStorage.getItem("user");
   axios
-    .post("/login", {
-      type: "check token",
-      token,
-    })
+    .post("/login", { headers: {"Authorization" : `Bearer ${token}`} })
     .then((response) => {
       if (response.status === 200) {
         alert("logged in");
@@ -22,7 +19,9 @@ import "./style/login.css";
 
 const Login = (props) => {
   /* states declaration */
-  const [user, setuser] = useContext(UserContext);
+  const { user, islogged } = useContext(UserContext);
+  const [userInfo, setuserInfo] = user;
+  const [logged, setlogged] = islogged;
   const [username, setusername] = useState("");
   const [password, setpassword] = useState("");
   const [couldsubmit, setcouldsubmit] = useState(false);
@@ -36,8 +35,9 @@ const Login = (props) => {
       })
       .then((response) => {
         if (response.status === 200) {
-          setuser(response.data);
+          setuserInfo(response.data);
           window.localStorage.setItem("mockblogtoken", response.data["token"]);
+          props.history.push(`/profile/user=:${userInfo["username"]}`);
         } else {
           alert("this account ain't exists");
         }

@@ -1,12 +1,14 @@
-import React, { /* useContext,  */ useState, useEffect } from "react";
-/* import { UserContext } from "./resources/userContext"; */
+import React, { useContext, useState, useEffect } from "react";
+import { UserContext } from "./resources/userContext";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import register from "./style/register.css";
+import "./style/register.css";
 
 const Register = (props) => {
   /* states declaration */
-  /* const [user, setUser] = useContext(UserContext); */
+  const { user, islogged } = useContext(UserContext);
+  const [userInfo, setuserInfo] = user;
+  const [logged, setlogged] = islogged;
   const [username, setusername] = useState("");
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
@@ -118,17 +120,23 @@ const Register = (props) => {
         password,
       })
       .then((response) => {
-        response.status === 201
-          ? alert("this email is already exists")
-          : alert("registered");
+        if (response.status === 201) {
+          setuserInfo(response.data);
+          window.localStorage.setItem("mockblogtoken", response.data["token"]);
+          props.history.push(`/confirm`);
+          setTimeout(() => {
+            setlogged(true);
+            props.history.push(`/profile/user=:${userInfo["username"]}`);
+          }, 2000);
+        } else {
+          alert("this email is already exists");
+        }
       })
       .catch((err) => {
         console.log(err);
       });
   };
-  /* 201 created 
-409 conflict
-400 bad request */
+
   return (
     <div className="register-container">
       <img
