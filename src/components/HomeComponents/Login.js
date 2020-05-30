@@ -93,9 +93,12 @@ const Login = (props) => {
                 : setcouldsubmit(false);
             }}
           />
-          <Link className="toreset" to="/reset_password">
-            forget password!!
-          </Link>
+          <div className="toreset-container">
+            <Link className="toreset" to="/reset-password">
+              forget password!
+            </Link>
+          </div>
+
           <div className="login">
             <div className="reminder">
               <input type="checkbox" name="reminder" id="reminder" />
@@ -109,7 +112,6 @@ const Login = (props) => {
               disabled={!couldsubmit}
             />
           </div>
-
           <div className="separation"></div>
           <div className="tologin-container">
             Don't have an account?

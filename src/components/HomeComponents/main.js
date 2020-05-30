@@ -8,9 +8,8 @@ import {
   faFacebookF,
   faInstagram,
   faYoutube,
-  faMailchimp,
 } from "@fortawesome/free-brands-svg-icons";
-library.add(faFacebookF, faInstagram, faYoutube, faMailchimp);
+library.add(faFacebookF, faInstagram, faYoutube);
 
 function Main() {
   return (
@@ -19,7 +18,7 @@ function Main() {
         <div className="pt1">
           <h1>Get smarter about what matters to you</h1>
           <h4>Thinking outside the box</h4>
-          <Link to="/register">
+          <Link className="btn-container" to="/register">
             <button className="btn1">get started</button>
           </Link>
         </div>
@@ -60,7 +59,9 @@ function Main() {
           Voluptas ipsum quas facere officiis ullam, fugiat omnis distinctio
           quia, laudantium, natus voluptate!
         </p>
-        <button className="btn1"> Read more {`  `} ---></button>
+        <Link to="/about">
+          <button className="btn1"> Read more {`  `} ---></button>
+        </Link>
       </div>
       <div className="lastposts">
         <h1>Lastest posts</h1>

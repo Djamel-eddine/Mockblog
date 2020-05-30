@@ -11,13 +11,18 @@
   margin: 30px auto;
   justify-content: space-between;
   width: 90%;
+  .logo {
+    display: grid;
+    place-items: center center;
+    margin-right: 20px;
+  }
 }
 
 .search {
   display: grid;
   grid-template-columns: 8fr 2fr;
-  align-items: end;
-  width: 350px;
+  place-content: center center;
+  width: 430px;
 
   input {
     border: none;
@@ -26,6 +31,7 @@
     height: 30px;
     margin-left: 20px;
     font-size: medium;
+    width: 90%;
   }
   label:hover {
     cursor: pointer;
@@ -100,4 +106,14 @@
 }
 .btn2 {
   @extend .button-type2;
+  display: none;
+}
+@media only screen and (max-width: 1090px) {
+  .navigation_menu {
+    display: none;
+  }
+  #trigger {
+    display: inline;
+    margin-right: 30px;
+  }
 }

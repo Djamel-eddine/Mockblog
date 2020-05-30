@@ -12,6 +12,12 @@ body {
   overflow-y: scroll;
 }
 
+.fig-back1 {
+  position: absolute;
+  height: 400px;
+  left: -250px;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -24,6 +30,12 @@ body {
   width: 100vw;
   overflow-x: hidden;
   overflow-y: scroll;
+}
+
+.fig-back1 {
+  position: absolute;
+  height: 400px;
+  left: -250px;
 }
 
 .button-type1, .btn1,
@@ -98,15 +110,20 @@ body {
   width: 90%;
 }
 
+.container .logo {
+  display: -ms-grid;
+  display: grid;
+  place-items: center center;
+  margin-right: 20px;
+}
+
 .search {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 8fr 2fr;
       grid-template-columns: 8fr 2fr;
-  -webkit-box-align: end;
-      -ms-flex-align: end;
-          align-items: end;
-  width: 350px;
+  place-content: center center;
+  width: 430px;
 }
 
 .search input {
@@ -116,6 +133,7 @@ body {
   height: 30px;
   margin-left: 20px;
   font-size: medium;
+  width: 90%;
 }
 
 .search label:hover {
@@ -204,4 +222,18 @@ body {
 
 .navigation_menu #trigger {
   display: none;
+}
+
+.btn2 {
+  display: none;
+}
+
+@media only screen and (max-width: 1090px) {
+  .navigation_menu {
+    display: none;
+  }
+  #trigger {
+    display: inline;
+    margin-right: 30px;
+  }
 }

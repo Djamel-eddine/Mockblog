@@ -34,3 +34,14 @@ body {
   overflow-x: hidden; //horizontal
   overflow-y: scroll; //vertical
 }
+
+.fig-back1 {
+  position: absolute;
+  height: 400px;
+  left: -250px;
+}
+@mixin submaincontainer {
+  width: 80vw;
+  background-color: white;
+  box-shadow: 0 0 20px lighten($color: $secondary-color, $amount: 30%);
+}

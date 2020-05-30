@@ -12,6 +12,12 @@ body {
   overflow-y: scroll;
 }
 
+.fig-back1 {
+  position: absolute;
+  height: 400px;
+  left: -250px;
+}
+
 .edit-main-container {
   display: -ms-grid;
   display: grid;

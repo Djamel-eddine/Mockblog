@@ -14,7 +14,7 @@ export const UserProvider = (props) => {
     is_active: false,
     is_blogger: "",
     profile: {
-      firstname: "ghadjati",
+      firstname: "ghadjati oussama",
       lastname: "oussama",
       date_of_birth: "",
       bio: "",

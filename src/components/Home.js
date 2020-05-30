@@ -5,7 +5,7 @@ import Register from "./HomeComponents/Register";
 import { Switch, Route, BrowserRouter as Router } from "react-router-dom";
 import { UserProvider } from "./HomeComponents/resources/userContext";
 import Footer from "./HomeComponents/footer";
-import About from "./about";
+import About from "./HomeComponents/about";
 import Error from "./error";
 import Contact from "./contact";
 import Profile from "./HomeComponents/profile";
@@ -13,7 +13,8 @@ import Blog from "./blog";
 import Article from "./article";
 import Confirm from "./HomeComponents/confirm";
 import Main from "./HomeComponents/main";
-import Reset from "./HomeComponents/reset-pass";
+import Reset1 from "./HomeComponents/reset-password-stp1";
+import Reset2 from "./HomeComponents/reset-pass";
 import EditProfile from "./HomeComponents/edit-profile";
 
 const Home = (props) => {
@@ -30,14 +31,24 @@ const Home = (props) => {
           <Route exact path="/contact" component={Contact} />
 
           <Route exact path="/blog" component={Blog} />
-          <Route exact path="/reset_password" component={Reset} />
+          <Route exact path="/reset-password" component={Reset1} />
           <Route
             exact
             path="/edit_profile/user=:user"
             component={EditProfile}
           />
           <Route exact path="/profile/user=:user" component={Profile} />
-          <Route exact path="/article/:id" component={Article} />
+          <Route path="/article/:id" component={Article} />
+          <Route
+            path="/acount/password/token=:token"
+            render={(props) => {
+              const usertoken = props.location.pathname.replace(
+                "/acount/password/token=",
+                ""
+              );
+              return <Reset2 token={usertoken} />;
+            }}
+          />
           <Route component={Error} />
         </Switch>
         <Footer />

@@ -39,7 +39,7 @@ const Register = (props) => {
   const checkemail = (e) => {
     if (/^\w+([-]?\w+)*@\w+([-]?\w+)*(\.\w{2,3})+$/.test(email)) {
       axios
-        .post(`/api/v1/register?username=${email}`)
+        .post(`/api/v1/register?email=${email}`)
         .then((response) => {
           response.status === 200
             ? setnewemail(true)
@@ -198,7 +198,7 @@ const Register = (props) => {
           />
 
           <Link className="tologin" to="/login">
-            you're a blogger already!!
+            have an account?
           </Link>
 
           <input

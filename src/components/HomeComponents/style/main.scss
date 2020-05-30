@@ -8,6 +8,7 @@ $header-font-size: 72px;
 }
 .main-container {
   @include container();
+  border: none;
   display: grid;
   padding: 20px;
   .header {
@@ -19,6 +20,7 @@ $header-font-size: 72px;
         @include headers-style;
       }
       h4 {
+        margin-top: 20px;
         color: $secondary-color;
         font-family: $paragraph-font;
       }
@@ -55,6 +57,7 @@ $header-font-size: 72px;
           }
           &:hover {
             opacity: 100%;
+            transform: scale(1.2);
           }
         }
       }
@@ -162,9 +165,10 @@ $header-font-size: 72px;
   .expandshit {
     display: grid;
     place-items: center center;
-    margin: 50px auto 100px;
+    margin: 50px 0 100px;
     h1 {
       @include headers-style;
+      text-align: center;
     }
     button {
       background-color: $info-color;
@@ -174,6 +178,29 @@ $header-font-size: 72px;
       transition: all 0.6s;
       &:hover {
         background-color: $primary-color;
+      }
+    }
+  }
+}
+@media only screen and (max-width: 1090px) {
+  .main-container {
+    .header {
+      display: grid;
+      grid-template-columns: 1fr;
+      .pt1 {
+        button {
+          transform: scale(1.4);
+          transform-origin: left;
+        }
+      }
+      .pt2 {
+        display: grid;
+        place-items: center center;
+        img {
+          width: 100% !important;
+
+          right: 0px !important;
+        }
       }
     }
   }

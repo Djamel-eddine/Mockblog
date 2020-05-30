@@ -2,7 +2,7 @@
 
 .footer {
   display: grid;
-  position: relative;
+  /* position: relative; */
 
   height: 320px;
   width: 100vw;
@@ -12,48 +12,82 @@
   .container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    width: 80vw;
-  }
-  div {
-    display: grid;
-    grid-template-columns: 1fr;
-    margin: 30px;
-    span {
-      font-family: $links-font;
-      color: rgba($color: white, $alpha: 0.6);
+    padding: 0 5vw;
+
+    div {
+      display: grid;
+      grid-template-columns: 100%;
+      margin: 30px;
+      span {
+        font-family: $links-font;
+        color: rgba($color: white, $alpha: 0.6);
+      }
     }
-  }
-  .navigation,
-  .subscription {
-    border-right: solid 2px white;
-    .nav-item {
-      text-decoration: none;
-      color: white;
-      padding: 10px 0;
-      font-family: $links-font;
-      font-weight: 400;
-      margin-right: 30px;
-      text-transform: capitalize;
-      font-size: large;
-      &:hover {
-        font-weight: 700;
+    .navigation,
+    .subscription {
+      border-right: solid 2px white;
+      .nav-item {
+        text-decoration: none;
+        color: white;
+        padding: 10px 0;
+        font-family: $links-font;
+        font-weight: 400;
+        /* margin-right: 30px; */
+        text-transform: capitalize;
+        font-size: large;
+        &:hover {
+          font-weight: 700;
+        }
+      }
+    }
+    .subscription {
+      margin-left: 0;
+    }
+    .social_media {
+      display: grid;
+      grid-template-columns: repeat(4, auto);
+      grid-template-rows: auto auto;
+      justify-items: center;
+      place-content: center;
+      margin-right: 0;
+      small {
+        grid-column: 1/-1;
+        font-family: $links-font;
+        font-size: smaller;
+        color: rgba($color: white, $alpha: 0.7);
+      }
+      a {
+        margin: 10px;
+        transition: all 0.5s;
+        &:hover {
+          transform: scale(1.2);
+        }
       }
     }
   }
-  .social_media {
-    display: grid;
-    grid-template-columns: repeat(4, auto);
-    grid-template-rows: auto auto;
-    justify-items: center;
-    place-content: center;
-    small {
-      grid-column: 1/-1;
-      font-family: $links-font;
-      font-size: smaller;
-      color: rgba($color: white, $alpha: 0.7);
-    }
-    a {
-      margin: 10px;
+}
+@media only screen and (max-width: 810px) {
+  .footer {
+    height: 700px;
+    .container {
+      place-items: center center;
+
+      div {
+        grid-column: 1/-1;
+        place-items: center center;
+        border-right: none !important;
+        border-bottom: solid 2px white;
+        margin: 0px !important;
+        width: 60vw;
+
+        padding: 30px;
+        .nav-item {
+          font-size: 20px !important;
+        }
+      }
+      div:last-child {
+        border: none;
+      }
     }
   }
 }

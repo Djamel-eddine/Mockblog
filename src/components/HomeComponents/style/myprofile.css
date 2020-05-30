@@ -12,6 +12,12 @@ body {
   overflow-y: scroll;
 }
 
+.fig-back1 {
+  position: absolute;
+  height: 400px;
+  left: -250px;
+}
+
 .main-profile-container {
   display: -ms-grid;
   display: grid;
@@ -32,12 +38,22 @@ body {
 }
 
 .main-profile-container .profile-container .addingpost {
+  display: -ms-grid;
+  display: grid;
   grid-column: 1/-1;
-  justify-self: flex-end;
-  padding: 10px 75px;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
   text-transform: capitalize;
   font-weight: 400;
   font-size: 18px;
+}
+
+.main-profile-container .profile-container .addingpost .btn2 {
+  display: block !important;
+  color: #1592e6;
+  font-size: large;
+  width: 200px;
 }
 
 .main-profile-container .profile-container .my-infos {
@@ -94,6 +110,10 @@ body {
   margin-top: 10px;
 }
 
+.main-profile-container .profile-container .my-infos .body ul .ordinary-link {
+  display: none;
+}
+
 .main-profile-container .profile-container .my-infos button {
   margin-top: 30px;
   width: 80%;
@@ -124,6 +144,7 @@ body {
 }
 
 .main-profile-container .profile-container .posts-area .header button {
+  height: 50px;
   border: none;
   background-color: white;
   font-family: "Lato", sans-serif;
@@ -131,8 +152,67 @@ body {
   font-size: 25px;
   font-weight: 700;
   padding: 0 20px;
+  border-bottom: solid 2px #6f8191;
 }
 
 .main-profile-container .profile-container .posts-area .header button:hover {
   border-bottom: solid 2px #1592e6;
+}
+
+@media only screen and (max-width: 1000px) {
+  .profile-container {
+    -ms-grid-columns: 2fr 1fr !important;
+        grid-template-columns: 2fr 1fr !important;
+  }
+  .profile-container .addingpost {
+    -ms-grid-column: 2 !important;
+    -ms-grid-column-span: 1 !important;
+    grid-column: 2/3 !important;
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 1;
+    grid-row: 1/2;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    -webkit-box-pack: stretch !important;
+        -ms-flex-pack: stretch !important;
+            justify-content: stretch !important;
+  }
+  .profile-container .addingpost button {
+    width: 100% !important;
+  }
+  .profile-container .my-infos {
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 1;
+    grid-column: 1/2;
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 1;
+    grid-row: 1/2;
+    -ms-grid-columns: 150px 1fr;
+        grid-template-columns: 150px 1fr;
+  }
+  .profile-container .my-infos .body {
+    border-left: none !important;
+    margin-left: 0px !important;
+  }
+  .profile-container .my-infos .body ul .ordinary-link {
+    display: inline !important;
+    text-decoration: none;
+    color: #1592e6;
+    font-weight: bolder;
+    font-size: larger;
+  }
+  .profile-container .my-infos .header h1 {
+    display: none;
+  }
+  .profile-container .my-infos .header img {
+    height: 130px !important;
+    width: 130px !important;
+  }
+  .profile-container .my-infos #link {
+    display: none;
+  }
+  .profile-container .posts-area {
+    grid-column: 1/-1 !important;
+  }
 }

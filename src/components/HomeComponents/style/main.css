@@ -12,6 +12,12 @@ body {
   overflow-y: scroll;
 }
 
+.fig-back1 {
+  position: absolute;
+  height: 400px;
+  left: -250px;
+}
+
 .main-container {
   display: -ms-grid;
   display: grid;
@@ -19,6 +25,7 @@ body {
   width: 100vw;
   background-color: rgba(54, 57, 218, 0.02);
   border-top: solid 2px #1592e6;
+  border: none;
   display: grid;
   padding: 20px;
 }
@@ -42,6 +49,7 @@ body {
 }
 
 .main-container .header .pt1 h4 {
+  margin-top: 20px;
   color: #6f8191;
   font-family: "Montserrat", sans-serif;
 }
@@ -92,6 +100,8 @@ body {
 
 .main-container .header .pt3 .social-contact .btn1:hover {
   opacity: 100%;
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
 }
 
 .main-container .aboutus {
@@ -227,7 +237,7 @@ body {
   display: -ms-grid;
   display: grid;
   place-items: center center;
-  margin: 50px auto 100px;
+  margin: 50px 0 100px;
 }
 
 .main-container .expandshit h1 {
@@ -235,6 +245,7 @@ body {
   font-family: "Merriweather", serif;
   font-weight: 900;
   color: #1a1e23;
+  text-align: center;
 }
 
 .main-container .expandshit button {
@@ -248,4 +259,28 @@ body {
 
 .main-container .expandshit button:hover {
   background-color: #1592e6;
+}
+
+@media only screen and (max-width: 1090px) {
+  .main-container .header {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+  }
+  .main-container .header .pt1 button {
+    -webkit-transform: scale(1.4);
+            transform: scale(1.4);
+    -webkit-transform-origin: left;
+            transform-origin: left;
+  }
+  .main-container .header .pt2 {
+    display: -ms-grid;
+    display: grid;
+    place-items: center center;
+  }
+  .main-container .header .pt2 img {
+    width: 100% !important;
+    right: 0px !important;
+  }
 }

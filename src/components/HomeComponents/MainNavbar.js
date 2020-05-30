@@ -18,23 +18,25 @@ const MainNavbar = (props) => {
   const [logged, setlogged] = islogged;
   const visitor = () => {
     return (
-      <div className="navigation_menu">
-        <Link className="nav-item" to="/">
-          Home
-        </Link>
-        <Link className="nav-item" to="/about">
-          About
-        </Link>
-        <Link className="nav-item" to="/contact">
-          Contact-us
-        </Link>
-        <Link className="nav-item" to="/blog">
-          Blog
-        </Link>
+      <div>
+        <div className="navigation_menu">
+          <Link className="nav-item" to="/">
+            Home
+          </Link>
+          <Link className="nav-item" to="/about">
+            About
+          </Link>
+          <Link className="nav-item" to="/contact">
+            Contact-us
+          </Link>
+          <Link className="nav-item" to="/blog">
+            Blog
+          </Link>
 
-        <Link to="/register">
-          <button className="btn1">get started</button>
-        </Link>
+          <Link to="/register">
+            <button className="btn1">get started</button>
+          </Link>
+        </div>
         <button className="btn2" id="trigger">
           disp
         </button>
@@ -43,26 +45,31 @@ const MainNavbar = (props) => {
   };
   const blogger = () => {
     return (
-      <div className="navigation_menu">
-        <Link className="nav-item" to="/">
-          Home
-        </Link>
-        <Link className="nav-item" to="/blog">
-          Blog
-        </Link>
-        <span className="nav-item profile-nav" onClick={dispList}>
-          <img src="./resources/profile.png" alt="profile" height="30px" />
-          {/* <Icon icon={faAngellist} size="1x" /> */}
-        </span>
-        <div className="props">
-          <Link className="prop-list-item" to="">
-            Edit profile
+      <div>
+        <div className="navigation_menu">
+          <Link className="nav-item" to="/">
+            Home
           </Link>
-          <div></div>
-          <Link to="/" className="prop-list-item" onClick={logout}>
-            logout
+          <Link className="nav-item" to="/blog">
+            Blog
           </Link>
+          <span className="nav-item profile-nav" onClick={dispList}>
+            <img src="./resources/profile.png" alt="profile" height="30px" />
+            {/* <Icon icon={faAngellist} size="1x" /> */}
+          </span>
+          <div className="props">
+            <Link className="prop-list-item" to="">
+              Edit profile
+            </Link>
+            <div></div>
+            <Link to="/" className="prop-list-item" onClick={logout}>
+              logout
+            </Link>
+          </div>
         </div>
+        <button className="btn2" id="trigger">
+          disp
+        </button>
       </div>
     );
   };
@@ -74,7 +81,6 @@ const MainNavbar = (props) => {
     axios
       .post("api/v1/logout", {
         headers: { Authorization: `Bearer ${userInf["token"]}` },
-        body: {},
       })
       .then((response) => {
         if (response.status === 200) {

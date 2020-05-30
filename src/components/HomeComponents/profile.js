@@ -16,7 +16,10 @@ const Profile = () => {
   return (
     <div className="main-profile-container">
       <div className="profile-container">
-        <button className="btn2 addingpost">Add post</button>
+        <div className="addingpost">
+          <button className="btn2">Add post</button>
+        </div>
+
         <div className="my-infos">
           <div className="header">
             <img src="" alt="profile" />
@@ -28,6 +31,14 @@ const Profile = () => {
               <li>posts: {userInf["profile"]["posts"].length}</li>
               <li>Followers: {userInf["profile"]["followers"].length}</li>
               <li>Following: {userInf["profile"]["follows"].length}</li>
+              <li>
+                <Link
+                  className="ordinary-link"
+                  to={`/edit_profile/user=${userInf["username"]}`}
+                >
+                  Edit Profile
+                </Link>
+              </li>
             </ul>
           </div>
           <Link id="link" to={`/edit_profile/user=${userInf["username"]}`}>
