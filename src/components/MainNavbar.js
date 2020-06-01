@@ -1,23 +1,25 @@
 import React, { useContext } from "react";
 import { UserContext } from "./resources/states/userContext";
 import { Link } from "react-router-dom";
+import { withRouter } from "react-router";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import axios from "axios";
 import { FontAwesomeIcon as Icon } from "@fortawesome/react-fontawesome";
 import { faAngellist } from "@fortawesome/free-brands-svg-icons";
 import "./style/main_navbar.css";
+
+//imporat icons and images
 import searchicon from "./resources/images/search.png";
 import userImg from "./resources/images/profile.png";
+
 library.add(faAngellist);
 
-/* import { faHome } from "@fortawesome/free-solid-svg-icons"; */
-/* import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"; */
-
-/* import "../../../node_modules/font-awesome/css/font-awesome.min.css"; */
 const MainNavbar = (props) => {
   const { user, islogged } = useContext(UserContext);
   const [userInf, setuserInf] = user;
   const [logged, setlogged] = islogged;
+
+  //use it when the user isn't logged in
   const visitor = () => {
     return (
       <div>
@@ -45,6 +47,8 @@ const MainNavbar = (props) => {
       </div>
     );
   };
+
+  //use it when the user isn logged in
   const blogger = () => {
     return (
       <div>
@@ -63,6 +67,7 @@ const MainNavbar = (props) => {
             <Link
               className="prop-list-item"
               to={`/profile/user=${userInf["username"]}`}
+              onClick={dispList}
             >
               profile
             </Link>
@@ -70,6 +75,7 @@ const MainNavbar = (props) => {
             <Link
               className="prop-list-item"
               to={`/edit_profile/user=${userInf["username"]}`}
+              onClick={dispList}
             >
               Edit profile
             </Link>
@@ -85,24 +91,35 @@ const MainNavbar = (props) => {
       </div>
     );
   };
-  const dispList = (e) => {
-    const propnav = document.getElementsByClassName("props");
-    propnav[0].classList.toggle("prop-list");
-  };
+  /* logout methode */
   const logout = (e) => {
     axios
       .post("api/v1/logout", {
-        headers: { Authorization: `Bearer ${userInf["token"]}` },
+        headers: {
+          Authorization: `Bearer ${userInf["token"]}`,
+        },
       })
       .then((response) => {
         if (response.status === 200) {
           setlogged("false");
+          props.history.go(1);
+          /* props.history.replace(
+            `/edit_profile/user=${userInf["username"]}`,
+            "/"
+          ); */
         }
       });
     setlogged(!logged);
     const propnav = document.getElementsByClassName("props");
     propnav[0].classList.toggle("prop-list");
   };
+
+  //
+  const dispList = (e) => {
+    const propnav = document.getElementsByClassName("props");
+    propnav[0].classList.toggle("prop-list");
+  };
+
   return (
     <div className="container">
       <div className="logo">

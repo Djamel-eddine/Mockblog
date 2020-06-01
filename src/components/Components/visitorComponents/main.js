@@ -1,13 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./style/main.css";
-
-//illustration and shapes
-import post_ed from "../../resources/images/profile.png";
-import home_ill from "./resources/illustrations/home_ill.svg";
-import apostrophe from "./resources/shapes/apostrophe.svg";
-
-import PostsMostRead from "./PostsMostRead";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon as Icon } from "@fortawesome/react-fontawesome";
 import {
@@ -15,9 +8,18 @@ import {
   faInstagram,
   faYoutube,
 } from "@fortawesome/free-brands-svg-icons";
+
+//illustration and shapes
+import post_ed from "../../resources/images/profile.png";
+import home_ill from "./resources/illustrations/home_ill.svg";
+import apostrophe from "./resources/shapes/apostrophe.svg";
+
+//imporat components
+import PostsMostRead from "./PostsMostRead";
+
 library.add(faFacebookF, faInstagram, faYoutube);
 
-function Main() {
+function Main(props) {
   return (
     <div className="main-container">
       <div className="header">
