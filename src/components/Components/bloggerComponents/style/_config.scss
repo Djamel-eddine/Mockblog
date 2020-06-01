@@ -1,0 +1,47 @@
+$primary-color: #1592e6;
+$info-color: #77c1fd;
+$secondary-color: #6f8191;
+$secondary-color-darker: #1a1e23;
+$pink: #ff58a0;
+$green: #3dff3d;
+$orange: #ff7b60;
+$crevette: #ff7b60;
+
+$headers-font: "Merriweather", serif;
+$links-font: "Lato", sans-serif;
+$paragraph-font: "Montserrat", sans-serif;
+@mixin container() {
+  display: grid;
+  place-items: center center;
+
+  width: 100vw;
+  background-color: rgba($color: #3639da, $alpha: 0.02);
+  border-top: solid 2px $primary-color;
+}
+@mixin header {
+  font-family: $paragraph-font;
+  color: $secondary-color;
+  font-weight: 300;
+}
+* {
+  margin: 0;
+  padding: 0;
+  border: none;
+  box-sizing: border-box;
+}
+body {
+  width: 100vw;
+  overflow-x: hidden; //horizontal
+  overflow-y: scroll; //vertical
+}
+
+.fig-back1 {
+  position: absolute;
+  height: 400px;
+  left: -250px;
+}
+@mixin submaincontainer {
+  width: 80vw;
+  background-color: white;
+  box-shadow: 0 0 20px lighten($color: $secondary-color, $amount: 30%);
+}

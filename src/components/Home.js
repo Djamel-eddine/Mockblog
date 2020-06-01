@@ -1,21 +1,28 @@
 import React, { useContext } from "react";
-import Navbar from "./HomeComponents/MainNavbar";
-import Login from "./HomeComponents/Login";
-import Register from "./HomeComponents/Register";
 import { Switch, Route, BrowserRouter as Router } from "react-router-dom";
-import { UserProvider } from "./HomeComponents/resources/userContext";
-import Footer from "./HomeComponents/footer";
-import About from "./HomeComponents/about";
+//main components
+import Navbar from "./MainNavbar";
+import Footer from "./footer";
 import Error from "./error";
-import Contact from "./contact";
-import Profile from "./HomeComponents/profile";
-import Blog from "./blog";
-import Article from "./article";
-import Confirm from "./HomeComponents/confirm";
-import Main from "./HomeComponents/main";
-import Reset1 from "./HomeComponents/reset-password-stp1";
-import Reset2 from "./HomeComponents/reset-pass";
-import EditProfile from "./HomeComponents/edit-profile";
+
+//visitor components
+import Login from "./Components/visitorComponents/Login";
+import Register from "./Components/visitorComponents/Register";
+import Confirm from "./Components/visitorComponents/confirm";
+import Main from "./Components/visitorComponents/main";
+import Reset1 from "./Components/visitorComponents/reset-password-stp1";
+import Reset2 from "./Components/visitorComponents/reset-password-stp2";
+import About from "./Components/visitorComponents/about";
+import Contact from "./Components/visitorComponents/contact";
+import Blog from "./Components/visitorComponents/blog";
+
+//blogger components
+import Profile from "./Components/bloggerComponents/profile";
+import Article from "./Components/bloggerComponents/article";
+import EditProfile from "./Components/bloggerComponents/edit-profile";
+
+//states
+import { UserProvider } from "./resources/states/userContext";
 
 const Home = (props) => {
   return (
@@ -42,11 +49,11 @@ const Home = (props) => {
           <Route
             path="/acount/password/token=:token"
             render={(props) => {
-              const usertoken = props.location.pathname.replace(
+              const resettoken = props.location.pathname.replace(
                 "/acount/password/token=",
                 ""
               );
-              return <Reset2 token={usertoken} />;
+              return <Reset2 token={resettoken} />;
             }}
           />
           <Route component={Error} />

@@ -1,0 +1,103 @@
+@import "config";
+.edit-main-container {
+  @include container();
+
+  .edit-container {
+    margin: 100px 0;
+    width: 80vw;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 0 20px $secondary-color;
+    .header {
+      border-bottom: solid 1px $primary-color;
+      border-left: solid 3px $primary-color;
+      padding: 20px 30px;
+      @include header;
+    }
+    .body {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: 100px auto;
+      margin: 100px;
+      .profile-pic {
+        display: grid;
+        grid-template-columns: 100px 1fr;
+        grid-template-rows: 50px 50px;
+
+        grid-gap: 5px 50px;
+        img {
+          grid-row: 1/-1;
+          height: 90px;
+          border-radius: 90px;
+          box-shadow: 0 0 10px $secondary-color;
+          align-self: center;
+        }
+        h2 {
+          @include header;
+        }
+        h2:first-of-type {
+          align-self: flex-end;
+          font-weight: 700;
+          font-family: $headers-font;
+          color: $secondary-color-darker;
+          text-transform: capitalize;
+        }
+        h2:last-of-type {
+          align-self: flex-start;
+          color: $primary-color;
+          font-weight: 500;
+        }
+      }
+    }
+    form {
+      padding: 20px 0 100px 0;
+      display: grid;
+      grid-template-columns: repeat(6, minmax(100px, 1fr));
+
+      grid-gap: 20px;
+      width: 90%;
+      justify-self: flex-end;
+
+      label {
+        @include header;
+        width: 100%;
+        input {
+          border: solid 1px $primary-color;
+          border-radius: 5px;
+          height: 50px;
+          width: 100%;
+          margin-top: 5px;
+          margin-bottom: 10px;
+          padding: 10px 20px;
+          @include header;
+          font-size: 18px;
+          color: $secondary-color-darker;
+          font-weight: 500;
+          &:hover {
+            box-shadow: 0 0 10px $secondary-color;
+          }
+        }
+      }
+      .firstname {
+        grid-column: span 3;
+      }
+      .username {
+        grid-column: span 4;
+      }
+      .birthday {
+        grid-column: span 2;
+      }
+      .row {
+        grid-column: 1/-1;
+      }
+      .btn1 {
+        grid-column: 5/7;
+        margin-top: 30px;
+        padding: 10px;
+        text-transform: capitalize;
+        font-size: 20px;
+        font-weight: 400;
+      }
+    }
+  }
+}
