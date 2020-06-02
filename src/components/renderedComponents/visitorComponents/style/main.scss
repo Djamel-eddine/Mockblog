@@ -1,0 +1,208 @@
+@import "../../../style/config";
+$header-font-size: 72px;
+@mixin headers-style {
+  font-size: $header-font-size;
+  font-family: $headers-font;
+  font-weight: 900;
+  color: $secondary-color-darker;
+}
+.main-container {
+  @include container();
+  min-width: 650px;
+  border: none;
+  display: grid;
+  padding: 20px;
+  .header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    .pt1 {
+      padding: 50px;
+      h1 {
+        @include headers-style;
+      }
+      h4 {
+        margin-top: 20px;
+        color: $secondary-color;
+        font-family: $paragraph-font;
+      }
+      .btn1 {
+        margin-top: 40px;
+        padding: 15px 40px;
+      }
+    }
+    .pt2 {
+      padding-right: 50px;
+      img {
+        width: 120%;
+        position: relative;
+        right: 150px;
+      }
+    }
+    .pt3 {
+      grid-column: 1/-1;
+      display: grid;
+      place-content: center center;
+      .social-contact {
+        position: fixed;
+        top: 90vh;
+        .btn1 {
+          height: 30px;
+          width: 30px;
+          padding: 0px;
+          margin: 5px;
+          opacity: 70%;
+          transition: all 0.4s;
+          * {
+            transform: scale(1.2);
+            transform-origin: center;
+          }
+          &:hover {
+            opacity: 100%;
+            transform: scale(1.2);
+          }
+        }
+      }
+    }
+  }
+  .aboutus {
+    width: 60vw;
+    padding: 150px 0;
+    h1 {
+      @include headers-style;
+    }
+    p {
+      margin-top: 25px;
+      font-family: $paragraph-font;
+      color: $secondary-color;
+      line-height: 1.8;
+      font-weight: 500;
+    }
+    button {
+      background-color: $info-color;
+      padding: 10px 40px;
+      font-size: 16px;
+      font-weight: 300;
+      text-transform: capitalize;
+      margin-top: 30px;
+      position: relative;
+      left: 45vw;
+      transition: all 0.6s;
+      &:hover {
+        background-color: $primary-color;
+      }
+    }
+  }
+  .lastposts {
+    width: 70vw;
+    h1 {
+      @include headers-style;
+      position: absolute;
+      right: 12vw;
+    }
+    .lastpost-container {
+      background-color: rgba($color: #deefff, $alpha: 1);
+      position: relative;
+      top: 65px;
+      z-index: -1;
+      height: 300px;
+      padding: 70px;
+      display: grid;
+      grid-template-columns: 60px 1fr;
+      grid-gap: 20px;
+      img {
+        height: 60px;
+        border-radius: 60px;
+        box-shadow: 0 0 10px $secondary-color;
+      }
+      div {
+        h3 {
+          font-family: $headers-font;
+          font-weight: 900;
+          color: $secondary-color-darker;
+          text-transform: capitalize;
+          padding-bottom: 10px;
+          border-bottom: solid 1px $secondary-color;
+          display: inline-block;
+          box-shadow: 0 1px 1px $secondary-color;
+        }
+        p {
+          padding-top: 10px;
+          display: block;
+          font-family: $paragraph-font;
+          font-weight: 500;
+          font-size: 20px;
+        }
+      }
+    }
+    .apostroph {
+      position: relative;
+      top: 15px;
+      left: 50vw;
+    }
+  }
+  .mostread {
+    margin-top: 150px;
+    width: 100vw;
+    h1 {
+      @include headers-style;
+      margin-left: 15vw;
+    }
+    .separation {
+      width: 0;
+      height: 100px;
+      border: solid 1px rgba($color: $primary-color, $alpha: 0.8);
+      margin-left: 20vw;
+    }
+    .lastpost-core {
+      display: grid;
+      place-items: center center;
+      height: 400px;
+      h1 {
+        color: $secondary-color;
+        margin: 0;
+      }
+    }
+  }
+  .expandshit {
+    display: grid;
+    place-items: center center;
+    margin: 50px 0 100px;
+    h1 {
+      @include headers-style;
+      text-align: center;
+    }
+    button {
+      background-color: $info-color;
+      margin-top: 50px;
+      padding: 15px 40px;
+      font-size: 20px;
+      transition: all 0.6s;
+      &:hover {
+        background-color: $primary-color;
+      }
+    }
+  }
+}
+@media only screen and (max-width: 1090px) {
+  .main-container {
+    .header {
+      display: grid;
+      grid-template-columns: 1fr;
+      .pt1 {
+        button {
+          transform: scale(1.4);
+          transform-origin: left;
+        }
+      }
+      .pt2 {
+        display: grid;
+        place-items: center center;
+        img {
+          width: 100% !important;
+
+          right: 0px !important;
+        }
+      }
+    }
+  }
+}

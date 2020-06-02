@@ -1,0 +1,76 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: none;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  width: 100vw;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.fig-back1 {
+  position: absolute;
+  height: 400px;
+  left: -250px;
+}
+
+.shape1 {
+  position: absolute;
+  top: 200px;
+  left: -120px;
+  opacity: 20%;
+  height: 400px;
+  -webkit-transform: rotate(20deg);
+          transform: rotate(20deg);
+}
+
+.shape2 {
+  position: absolute;
+  top: 400px;
+  right: -500px;
+  height: 750px;
+  opacity: 25%;
+  -webkit-transform: rotate(10deg);
+          transform: rotate(10deg);
+}
+
+.shape3 {
+  position: absolute;
+  top: 700px;
+  left: -30px;
+  height: 200px;
+  opacity: 50%;
+  z-index: -1;
+}
+
+.error-container {
+  width: 1vw;
+  display: -ms-grid;
+  display: grid;
+  /*   grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr; */
+  place-items: center center;
+  padding: 0 10vw;
+}
+
+.error-container div {
+  display: -ms-grid;
+  display: grid;
+  width: 80vw;
+  margin: 20px 0 100px;
+  place-items: center center;
+}
+
+.error-container div .btn1 {
+  -ms-grid-column-align: center;
+      justify-self: center;
+  padding: 20px 50px;
+}
+
+.error-container div img {
+  width: 80%;
+}

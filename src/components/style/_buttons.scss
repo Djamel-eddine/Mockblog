@@ -27,13 +27,16 @@
 .button-type1,
 .button-type1:active {
   @include button-type1((5px 30px));
-  &:hover,
-  &:disabled {
+  &:hover {
     cursor: pointer;
     background-color: lighten($color: $primary-color, $amount: 5%);
   }
   &:disabled {
-    cursor: alias;
+    background-color: $secondary-color;
+    cursor: none;
+    &:hover {
+      box-shadow: none;
+    }
   }
 }
 
