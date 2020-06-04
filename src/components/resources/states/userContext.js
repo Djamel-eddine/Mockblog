@@ -28,12 +28,19 @@ export const UserProvider = (props) => {
     created_at: "",
     updated_at: "",
   });
+  const [Posts, setPosts] = useState([
+    {
+      0: { type: "header", data: { text: "dsfsd" } },
+      1: { type: "paragraph", data: { text: "dsfsd" } },
+    },
+  ]);
   return (
     <UserContext.Provider
       value={{
         user: [user, setuser],
         islogged: [islogged, setislogged],
         token: [Token, setToken],
+        posts: [Posts, setPosts],
       }}
     >
       {props.children}

@@ -20,7 +20,8 @@ import Blog from "./renderedComponents/visitorComponents/blog.jsx";
 import Profile from "./renderedComponents/bloggerComponents/profile.jsx";
 import Article from "./renderedComponents/bloggerComponents/article.jsx";
 import EditProfile from "./renderedComponents/bloggerComponents/edit-profile.jsx";
-/* import Editor from "./renderedComponents/bloggerComponents/postEditor/editor.jsx"; */
+import Editor from "./renderedComponents/bloggerComponents/postEditor/editor.jsx";
+import UpdatePost from "./renderedComponents/bloggerComponents/updatePost/updatePost.jsx";
 
 //states
 import { UserContext } from "./resources/states/userContext";
@@ -64,7 +65,8 @@ const Home = (props) => {
             return <Reset2 token={resettoken} />;
           }}
         />
-        {/* <Route path="/post_editor" component={Editor} /> */}
+        <Route path="/post_editor" component={Editor} />
+        <Route path="/update_post" component={UpdatePost} />
         <Route component={Error} />
       </Switch>
       <Footer />
