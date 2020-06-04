@@ -1,0 +1,109 @@
+* {
+  margin: 0;
+  padding: 0;
+  /* border: none; */
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  width: 100vw;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.fig-back1 {
+  position: absolute;
+  height: 400px;
+  left: -250px;
+}
+
+.shape1 {
+  position: absolute;
+  top: 200px;
+  left: -120px;
+  opacity: 20%;
+  height: 400px;
+  -webkit-transform: rotate(20deg);
+          transform: rotate(20deg);
+}
+
+.shape2 {
+  position: absolute;
+  top: 400px;
+  right: -500px;
+  height: 750px;
+  opacity: 25%;
+  -webkit-transform: rotate(10deg);
+          transform: rotate(10deg);
+}
+
+.shape3 {
+  position: absolute;
+  top: 700px;
+  left: -30px;
+  height: 200px;
+  opacity: 50%;
+  z-index: -1;
+}
+
+#error-area {
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  display: -ms-grid;
+  display: grid;
+  height: 0px;
+  background-color: rgba(255, 123, 96, 0.5);
+  -webkit-box-shadow: 0 0 10px #ff7b60;
+          box-shadow: 0 0 10px #ff7b60;
+  grid-column: 1/-1;
+  place-content: center center;
+  width: 100%;
+  font-family: "Merriweather", serif;
+  font-weight: 500;
+  text-shadow: 0 0 2px #6f8191;
+}
+
+.confirm-container {
+  display: -ms-grid;
+  display: grid;
+  place-items: center center;
+  width: 100vw;
+  background-color: rgba(54, 57, 218, 0.02);
+  border-top: solid 2px #1592e6;
+  /* place-items: center center; */
+}
+
+.confirm-container .confirm-sub-container {
+  width: 80vw;
+  background-color: white;
+  -webkit-box-shadow: 0 0 20px #c6cdd3;
+          box-shadow: 0 0 20px #c6cdd3;
+  margin: 100px 0;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 35%fr;
+      grid-template-columns: 35%fr;
+  place-items: center center;
+}
+
+.confirm-container .confirm-sub-container .sub-sub {
+  display: -ms-grid;
+  display: grid;
+  justify-items: center;
+  width: 100%;
+  /* justify-self: center; */
+  padding: 100px 0;
+}
+
+.confirm-container .confirm-sub-container .sub-sub h1 {
+  font-size: 72px;
+  font-family: "Merriweather", serif;
+  font-weight: 900;
+  color: #1a1e23;
+  margin-bottom: 30px;
+}
+
+.confirm-container .confirm-sub-container .sub-sub img {
+  width: 300px;
+}
