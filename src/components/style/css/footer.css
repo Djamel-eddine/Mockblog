@@ -1,7 +1,7 @@
 * {
   margin: 0;
   padding: 0;
-  border: none;
+  /* border: none; */
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
@@ -45,6 +45,23 @@ body {
   height: 200px;
   opacity: 50%;
   z-index: -1;
+}
+
+#error-area {
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  display: -ms-grid;
+  display: grid;
+  height: 0px;
+  background-color: rgba(255, 123, 96, 0.5);
+  -webkit-box-shadow: 0 0 10px #ff7b60;
+          box-shadow: 0 0 10px #ff7b60;
+  grid-column: 1/-1;
+  place-content: center center;
+  width: 100%;
+  font-family: "Merriweather", serif;
+  font-weight: 500;
+  text-shadow: 0 0 2px #6f8191;
 }
 
 .footer {

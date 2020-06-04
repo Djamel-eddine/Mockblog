@@ -55,15 +55,29 @@ const Register = (props: any) => {
   }, [newemail, newusername, pwmatches]);
   /* methods declaration */
   const checkusename = (e) => {
+    const target = e.target;
     axios
-      .get(`http://localhost:5000/api/v1/register?username=${username}`)
+      .get(
+        `https://mockblog-api.herokuapp.com/api/v1/register?username=${username}`
+      )
       .then((response) => {
-        response.status === 200
-          ? setnewusername(true)
-          : alert("this username is already exists");
+        if (response.status === 200) {
+          setnewusername(true);
+          target.style.borderColor = "#3dff3d";
+        } else {
+          alert("this username is already exists");
+        }
       })
       .catch((err) => {
-        console.log(err);
+        /* e.target.style.borderColor = "red" */
+        target.style.borderColor = "red";
+        const area = document.getElementById("error-area");
+        area.innerText = "this user name is already exists";
+        area.style.height = "50px";
+        setTimeout(() => {
+          area.style.height = "0px";
+          area.innerText = "";
+        }, 2000);
       });
     /*  axios({
       method: "get",
@@ -71,19 +85,35 @@ const Register = (props: any) => {
     }); */
   };
   const checkemail = (e) => {
+    const target = e.target;
     if (/^\w+([-]?\w+)*@\w+([-]?\w+)*(\.\w{2,3})+$/.test(email)) {
       axios
-        .get(`http://localhost:5000/api/v1/register?email=${email}`)
+        .get(
+          `https://mockblog-api.herokuapp.com/api/v1/register?email=${email}`
+        )
         .then((response) => {
-          response.status === 200
-            ? setnewemail(true)
-            : alert("this email is already exists");
+          if (response.status === 200) {
+            setnewemail(true);
+            target.style.borderColor = "#3dff3d";
+          } else {
+            alert("ther is a problem");
+          }
         })
         .catch((err) => {
-          console.log(err);
+          /* console.log(err); */
+          target.style.borderColor = "red";
+          const area = document.getElementById("error-area");
+          area.innerText = "this email is already exists";
+          area.style.height = "50px";
+          setTimeout(() => {
+            area.style.height = "0px";
+            area.innerText = "";
+          }, 2000);
         });
     } else {
-      alert("You have entered an invalid email address!");
+      if (target.value.length > 0) {
+        target.style.borderColor = "red";
+      }
     }
   };
 
@@ -152,7 +182,7 @@ const Register = (props: any) => {
   const sendRegisterRequest = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:5000/api/v1/register", {
+      .post("https://mockblog-api.herokuapp.com/api/v1/register", {
         username,
         email,
         password,
@@ -164,15 +194,22 @@ const Register = (props: any) => {
           props.history.push(`/confirm`);
           setTimeout(() => {
             setlogged(true);
-            /* props.history.push(`/profile/user=:${userInfo["username"]}`); */
+            props.history.push(`/profile/user=:${userInfo["username"]}`);
             console.log(response.data);
           }, 2000);
         } else {
-          alert("this email is already exists");
+          alert(/* response.data.msgs.msg */);
         }
       })
       .catch((err) => {
-        console.log(err);
+        /* console.log(err); */
+        const area = document.getElementById("error-area");
+        area.innerText = "there a problem";
+        area.style.height = "50px";
+
+        setTimeout(() => {
+          props.history.push("/register");
+        }, 2000);
       });
   };
 
@@ -183,6 +220,7 @@ const Register = (props: any) => {
       <img className="shape shape3" src={orange_Ellipse} alt="shape2" />
       <div className="form-container">
         <form onSubmit={sendRegisterRequest} action="/register">
+          <div id="error-area"></div>
           <h2>Register</h2>
           <input
             type="text"

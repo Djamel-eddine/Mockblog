@@ -1,7 +1,7 @@
 * {
   margin: 0;
   padding: 0;
-  border: none;
+  /* border: none; */
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
@@ -47,6 +47,23 @@ body {
   z-index: -1;
 }
 
+#error-area {
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  display: -ms-grid;
+  display: grid;
+  height: 0px;
+  background-color: rgba(255, 123, 96, 0.5);
+  -webkit-box-shadow: 0 0 10px #ff7b60;
+          box-shadow: 0 0 10px #ff7b60;
+  grid-column: 1/-1;
+  place-content: center center;
+  width: 100%;
+  font-family: "Merriweather", serif;
+  font-weight: 500;
+  text-shadow: 0 0 2px #6f8191;
+}
+
 .edit-main-container {
   display: -ms-grid;
   display: grid;
@@ -81,7 +98,7 @@ body {
       grid-template-columns: 1fr;
   -ms-grid-rows: 100px auto;
       grid-template-rows: 100px auto;
-  margin: 100px;
+  margin: 5%;
 }
 
 .edit-main-container .edit-container .body .profile-pic {
@@ -95,6 +112,7 @@ body {
 }
 
 .edit-main-container .edit-container .body .profile-pic img {
+  z-index: 1;
   grid-row: 1/-1;
   height: 90px;
   border-radius: 90px;
@@ -131,8 +149,8 @@ body {
   padding: 20px 0 100px 0;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (minmax(100px, 1fr))[6];
-      grid-template-columns: repeat(6, minmax(100px, 1fr));
+  -ms-grid-columns: (minmax(30px, 1fr))[6];
+      grid-template-columns: repeat(6, minmax(30px, 1fr));
   grid-gap: 20px;
   width: 90%;
   justify-self: flex-end;
@@ -143,6 +161,7 @@ body {
   color: #6f8191;
   font-weight: 300;
   width: 100%;
+  z-index: 1;
 }
 
 .edit-main-container .edit-container form label input {
@@ -162,8 +181,8 @@ body {
 }
 
 .edit-main-container .edit-container form label input:hover {
-  -webkit-box-shadow: 0 0 10px #6f8191;
-          box-shadow: 0 0 10px #6f8191;
+  -webkit-box-shadow: 0 0 10px #77c1fd;
+          box-shadow: 0 0 10px #77c1fd;
 }
 
 .edit-main-container .edit-container form .firstname {

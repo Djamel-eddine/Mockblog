@@ -39,6 +39,7 @@
       input,
       input:active {
         @extend .button-type2;
+        text-transform: none;
         z-index: 1;
         grid-column: 1/-1;
         padding: 10px;
@@ -51,7 +52,7 @@
 
           border-left-width: 4px;
           padding: 7px;
-          box-shadow: 0 0 10px rgba($color: $secondary-color, $alpha: 0.5);
+          box-shadow: 0 0 10px rgba($color: $info-color, $alpha: 0.5);
         }
       }
       input[type="submit"] {

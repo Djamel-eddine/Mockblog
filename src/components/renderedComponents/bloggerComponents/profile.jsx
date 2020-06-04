@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { UserContext } from "../../resources/states/userContext";
 import { Link } from "react-router-dom";
 import Post from "./Post";
@@ -21,7 +21,9 @@ const Profile = () => {
       <img className="shape shape2" src={orange_Ellipse} alt="shape2" />
       <div className="profile-container">
         <div className="addingpost">
-          <button className="btn2">Add post</button>
+          <Link to="/post_editor">
+            <button className="btn2">Add post</button>
+          </Link>
         </div>
 
         <div className="my-infos">
@@ -30,11 +32,13 @@ const Profile = () => {
             <h1>{userInf["username"]}</h1>
           </div>
           <div className="body">
-            <h2>{userInf["profile"]["firstname"]}</h2>
+            <h2>{/* {userInf["profile"]["firstname"]} */} first name</h2>
             <ul className="blog-infos">
-              <li>posts: {userInf["profile"]["posts"].length}</li>
-              <li>Followers: {userInf["profile"]["followers"].length}</li>
-              <li>Following: {userInf["profile"]["follows"].length}</li>
+              <li>posts: {/* {userInf["profile"]["posts"].length} */} 0</li>
+              <li>Followers: {userInf["profile"]["followers"].length} </li>
+              <li>
+                Following: {/* {userInf["profile"]["follows"].length} */} 0
+              </li>
               <li>
                 <Link
                   className="ordinary-link"

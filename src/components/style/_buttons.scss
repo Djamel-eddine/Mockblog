@@ -1,32 +1,32 @@
 @import "config";
 
-@mixin button-type1($padding) {
+@mixin button-type1 {
   /* height: $height;
   width: $width; */
   color: white;
   text-transform: capitalize;
   border: none;
   background-color: $primary-color;
-  padding: $padding;
+  padding: 5px 30px;
   font-family: $links-font;
   font-weight: 700;
   text-transform: uppercase;
 }
-@mixin button-type2($padding) {
+@mixin button-type2 {
   /* height: $height;
   width: $width; */
   color: $primary-color;
   text-transform: capitalize;
   border: solid 1px $primary-color;
   background-color: white;
-  padding: $padding;
+  padding: 10px;
   font-family: $links-font;
   font-weight: 700;
 }
 
 .button-type1,
 .button-type1:active {
-  @include button-type1((5px 30px));
+  @include button-type1;
   &:hover {
     cursor: pointer;
     background-color: lighten($color: $primary-color, $amount: 5%);
@@ -42,7 +42,7 @@
 
 .button-type2,
 .button-type2:active {
-  @include button-type2(10px);
+  @include button-type2;
   &:hover {
     border-width: 2px;
     padding: 9px;

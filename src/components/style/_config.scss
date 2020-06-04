@@ -26,7 +26,7 @@ $paragraph-font: "Montserrat", sans-serif;
 * {
   margin: 0;
   padding: 0;
-  border: none;
+  /* border: none; */
   box-sizing: border-box;
 }
 body {
@@ -68,4 +68,18 @@ body {
   height: 200px;
   opacity: 50%;
   z-index: -1;
+}
+#error-area {
+  transition: all 0.5s;
+  display: grid;
+  height: 0px;
+  background-color: rgba($color: #ff7b60, $alpha: 0.5);
+  box-shadow: 0 0 10px #ff7b60;
+  grid-column: 1/-1;
+  place-content: center center;
+  width: 100%;
+
+  font-family: $headers-font;
+  font-weight: 500;
+  text-shadow: 0 0 2px $secondary-color;
 }

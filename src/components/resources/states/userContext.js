@@ -5,17 +5,19 @@ export const UserContext = createContext();
 
 export const UserProvider = (props) => {
   const [islogged, setislogged] = useState(false);
+  const [Token, setToken] = useState("");
   const [user, setuser] = useState({
-    id: null,
-    username: "ghadj",
-    nickname: "", //added
+    _id: null,
+    username: "",
     email: "",
     password: "",
     is_active: false,
     is_blogger: false,
+    __v: null,
+
     profile: {
-      firstname: "ghadjati oussama",
-      lastname: "oussama",
+      firstname: "",
+      lastname: "",
       date_of_birth: "",
       bio: "",
       followers: [],
@@ -25,13 +27,30 @@ export const UserProvider = (props) => {
     },
     created_at: "",
     updated_at: "",
-    token: "", //added
   });
   return (
     <UserContext.Provider
-      value={{ user: [user, setuser], islogged: [islogged, setislogged] }}
+      value={{
+        user: [user, setuser],
+        islogged: [islogged, setislogged],
+        token: [Token, setToken],
+      }}
     >
       {props.children}
     </UserContext.Provider>
   );
 };
+
+/* const a = {
+  email: "djamelmahrougui@gmail.com",
+  is_active: true,
+  is_blogger: false,
+  password: "$2b$10$rC//CbR.faXGb0nZs85Y7uH/EojjPqoYcOlCBqOaDH0hLSdnu4FUK",
+  profile: {
+    followers: Array(0),
+  },
+  updated_at: "2020-06-02T20:47:20.880Z",
+  username: "Djamel",
+  __v: 0,
+  _id: "5ed6bf78d513b40017912090",
+}; */

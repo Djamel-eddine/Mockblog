@@ -112,7 +112,13 @@ function Main(props) {
       <div className="expandshit">
         <h1>Expand your readings</h1>
         <h1>Expand your mind</h1>
-        {logged ? <span></span> : <button className="btn1">Get started</button>}
+        {logged ? (
+          <span></span>
+        ) : (
+          <Link to="/register">
+            <button className="btn1">Get started</button>
+          </Link>
+        )}
       </div>
     </div>
   );

@@ -17,7 +17,7 @@
 * {
   margin: 0;
   padding: 0;
-  border: none;
+  /* border: none; */
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
@@ -61,6 +61,23 @@ body {
   height: 200px;
   opacity: 50%;
   z-index: -1;
+}
+
+#error-area {
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  display: -ms-grid;
+  display: grid;
+  height: 0px;
+  background-color: rgba(255, 123, 96, 0.5);
+  -webkit-box-shadow: 0 0 10px #ff7b60;
+          box-shadow: 0 0 10px #ff7b60;
+  grid-column: 1/-1;
+  place-content: center center;
+  width: 100%;
+  font-family: "Merriweather", serif;
+  font-weight: 500;
+  text-shadow: 0 0 2px #6f8191;
 }
 
 .button-type1, .register-container .form-container form input[type="submit"],
@@ -130,7 +147,7 @@ body {
 * {
   margin: 0;
   padding: 0;
-  border: none;
+  /* border: none; */
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
@@ -174,6 +191,23 @@ body {
   height: 200px;
   opacity: 50%;
   z-index: -1;
+}
+
+#error-area {
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  display: -ms-grid;
+  display: grid;
+  height: 0px;
+  background-color: rgba(255, 123, 96, 0.5);
+  -webkit-box-shadow: 0 0 10px #ff7b60;
+          box-shadow: 0 0 10px #ff7b60;
+  grid-column: 1/-1;
+  place-content: center center;
+  width: 100%;
+  font-family: "Merriweather", serif;
+  font-weight: 500;
+  text-shadow: 0 0 2px #6f8191;
 }
 
 @media only screen and (max-width: 820px) {
@@ -236,6 +270,7 @@ body {
 
 .register-container .form-container form input,
 .register-container .form-container form input:active {
+  text-transform: none;
   z-index: 1;
   grid-column: 1/-1;
   padding: 10px;
@@ -250,8 +285,8 @@ body {
   padding: 10px;
   border-left-width: 4px;
   padding: 7px;
-  -webkit-box-shadow: 0 0 10px rgba(111, 129, 145, 0.5);
-          box-shadow: 0 0 10px rgba(111, 129, 145, 0.5);
+  -webkit-box-shadow: 0 0 10px rgba(119, 193, 253, 0.5);
+          box-shadow: 0 0 10px rgba(119, 193, 253, 0.5);
 }
 
 .register-container .form-container form input[type="submit"] {
@@ -362,8 +397,6 @@ body {
   -ms-grid-columns: 1fr;
       grid-template-columns: 1fr;
   grid-column: 1/-1;
-  /* place-items: center center; */
-  /* align-content: stretch; */
 }
 
 .login-container .toreset-container .toreset {
@@ -372,7 +405,7 @@ body {
   text-decoration: none;
   color: #1592e6;
   width: 100%;
-  text-align: center;
+  /* text-align: center; */
 }
 
 .login-container .reset-img {
@@ -382,7 +415,7 @@ body {
 * {
   margin: 0;
   padding: 0;
-  border: none;
+  /* border: none; */
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
@@ -426,6 +459,23 @@ body {
   height: 200px;
   opacity: 50%;
   z-index: -1;
+}
+
+#error-area {
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  display: -ms-grid;
+  display: grid;
+  height: 0px;
+  background-color: rgba(255, 123, 96, 0.5);
+  -webkit-box-shadow: 0 0 10px #ff7b60;
+          box-shadow: 0 0 10px #ff7b60;
+  grid-column: 1/-1;
+  place-content: center center;
+  width: 100%;
+  font-family: "Merriweather", serif;
+  font-weight: 500;
+  text-shadow: 0 0 2px #6f8191;
 }
 
 .button-type1, .register-container .form-container form input[type="submit"],
@@ -495,7 +545,7 @@ body {
 * {
   margin: 0;
   padding: 0;
-  border: none;
+  /* border: none; */
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
@@ -539,6 +589,23 @@ body {
   height: 200px;
   opacity: 50%;
   z-index: -1;
+}
+
+#error-area {
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  display: -ms-grid;
+  display: grid;
+  height: 0px;
+  background-color: rgba(255, 123, 96, 0.5);
+  -webkit-box-shadow: 0 0 10px #ff7b60;
+          box-shadow: 0 0 10px #ff7b60;
+  grid-column: 1/-1;
+  place-content: center center;
+  width: 100%;
+  font-family: "Merriweather", serif;
+  font-weight: 500;
+  text-shadow: 0 0 2px #6f8191;
 }
 
 @media only screen and (max-width: 820px) {
@@ -601,6 +668,7 @@ body {
 
 .register-container .form-container form input,
 .register-container .form-container form input:active {
+  text-transform: none;
   z-index: 1;
   grid-column: 1/-1;
   padding: 10px;
@@ -615,8 +683,8 @@ body {
   padding: 10px;
   border-left-width: 4px;
   padding: 7px;
-  -webkit-box-shadow: 0 0 10px rgba(111, 129, 145, 0.5);
-          box-shadow: 0 0 10px rgba(111, 129, 145, 0.5);
+  -webkit-box-shadow: 0 0 10px rgba(119, 193, 253, 0.5);
+          box-shadow: 0 0 10px rgba(119, 193, 253, 0.5);
 }
 
 .register-container .form-container form input[type="submit"] {

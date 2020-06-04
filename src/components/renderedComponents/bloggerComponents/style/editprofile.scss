@@ -18,7 +18,7 @@
       display: grid;
       grid-template-columns: 1fr;
       grid-template-rows: 100px auto;
-      margin: 100px;
+      margin: 5%;
       .profile-pic {
         display: grid;
         grid-template-columns: 100px 1fr;
@@ -26,6 +26,7 @@
 
         grid-gap: 5px 50px;
         img {
+          z-index: 1;
           grid-row: 1/-1;
           height: 90px;
           border-radius: 90px;
@@ -52,7 +53,7 @@
     form {
       padding: 20px 0 100px 0;
       display: grid;
-      grid-template-columns: repeat(6, minmax(100px, 1fr));
+      grid-template-columns: repeat(6, minmax(30px, 1fr));
 
       grid-gap: 20px;
       width: 90%;
@@ -61,6 +62,7 @@
       label {
         @include header;
         width: 100%;
+        z-index: 1;
         input {
           border: solid 1px $primary-color;
           border-radius: 5px;
@@ -73,8 +75,9 @@
           font-size: 18px;
           color: $secondary-color-darker;
           font-weight: 500;
+
           &:hover {
-            box-shadow: 0 0 10px $secondary-color;
+            box-shadow: 0 0 10px $info-color;
           }
         }
       }

@@ -15,9 +15,10 @@ import userImg from "./resources/images/profile.png";
 library.add(faAngellist);
 
 const MainNavbar = (props) => {
-  const { user, islogged } = useContext(UserContext);
+  const { user, islogged, token } = useContext(UserContext);
   const [userInf] = user;
   const [logged, setlogged] = islogged;
+  const [Token] = token;
 
   //use it when the user isn't logged in
   const visitor = () => {
@@ -96,23 +97,28 @@ const MainNavbar = (props) => {
     axios
       .post("api/v1/logout", {
         headers: {
-          Authorization: `Bearer ${userInf["token"]}`,
+          Authorization: `Bearer ${Token}`,
         },
       })
       .then((response) => {
         if (response.status === 200) {
           setlogged("false");
-          props.history.go(1);
-          /* props.history.replace(
-            `/edit_profile/user=${userInf["username"]}`,
-            "/"
-          ); */
         }
       });
-    setlogged(!logged);
+    /* setlogged(!logged); */
+
     const propnav = document.getElementsByClassName("props");
     propnav[0].classList.toggle("prop-list");
   };
+  /* document.querySelector("body").click(function (event) {
+    const target = event.target;
+    if (
+      !target.closest("#prop-list").length &&
+      document.getElementById("#prop-list").is(":visible")
+    ) {
+      document.getElementById("#prop-list").hide();
+    }
+  }); */
 
   //
   const dispList = (e) => {

@@ -48,8 +48,10 @@ type Info = {
 
 const Login = (props: any) => {
   /* states declaration */
-  const { user } = useContext(UserContext);
+  const { user, islogged, token } = useContext(UserContext);
   const [userInfo: Info, setuserInfo: Function] = user;
+  const [logged: Boolean, setlogged: Function] = islogged;
+  const [Token, setToken] = token;
   const [username: string, setusername] = useState("");
   const [password: string, setpassword] = useState("");
   const [couldsubmit: Boolean, setcouldsubmit] = useState(false);
@@ -85,23 +87,41 @@ const Login = (props: any) => {
       }); */
 
     axios
-      .post("http://localhost:5000/api/v1/login", {
+      .post("https://mockblog-api.herokuapp.com/api/v1/login", {
         username: username,
         password: password,
       })
-      .then((response) => {
+      .then(async (response) => {
         if (response.status === 200) {
           console.log(response);
 
-          setuserInfo(response.data);
-          window.localStorage.setItem("mockblogtoken", response.data["token"]);
-          props.history.push(`/profile/user=:${userInfo["username"]}`);
-        } else {
+          await setuserInfo(response.data.msgs.user);
+          await setToken(response.data.msgs["token"]);
+
+          window.localStorage.setItem(
+            "mockblogtoken",
+            response.data.msgs["token"]
+          );
+
+          setlogged(true);
+          props.history.push(
+            `/profile/user=:${response.data.msgs.user["username"]}`
+          );
+        } else if (response.status === 404) {
           alert("this account ain't exists");
         }
       })
       .catch((err) => {
-        console.log(err);
+        /* alert("this account ain't exists"); */
+
+        const area = document.getElementById("error-area");
+        area.innerText = "user name or password incorrect";
+        area.style.height = "50px";
+
+        setTimeout(() => {
+          area.style.height = "0px";
+          area.innerText = "";
+        }, 2000);
       });
   };
 
@@ -112,6 +132,7 @@ const Login = (props: any) => {
       <img className="shape shape3" src={orange_Ellipse} alt="shape2" />
       <div className="form-container">
         <form onSubmit={submitted} action="/login">
+          <div id="error-area"></div>
           <h2>Login</h2>
           <input
             type="text"
