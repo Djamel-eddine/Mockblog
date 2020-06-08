@@ -9,6 +9,8 @@ import {
   faInstagram,
   faYoutube,
 } from "@fortawesome/free-brands-svg-icons";
+import { faMouse } from "@fortawesome/free-solid-svg-icons";
+import mouse from "../../resources/images/mouse-icon.svg";
 
 //illustration and shapes
 import post_ed from "../../resources/images/profile.png";
@@ -17,8 +19,6 @@ import apostrophe from "./resources/shapes/apostrophe.svg";
 
 //imporat components
 import PostsMostRead from "./PostsMostRead.jsx";
-
-library.add(faFacebookF, faInstagram, faYoutube);
 
 function Main(props) {
   const { islogged } = useContext(UserContext);
@@ -52,12 +52,8 @@ function Main(props) {
               <Icon color="white" icon={faYoutube} size="1x" />
             </button>
           </div>
-          <Icon
-            className="cursor-icon"
-            color="gray"
-            icon={faYoutube}
-            size="2x"
-          />
+          {/* <Icon className="cursor-icon" color="gray" icon={faMouse} size="2x" /> */}
+          <img className="cursor-icon" src={mouse} alt="mouse" height="50px" />
         </div>
       </div>
       <div className="aboutus">

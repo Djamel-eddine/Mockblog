@@ -338,7 +338,9 @@ body {
   height: 50px !important;
 }
 
-.login-container input[type="submit"] {
+.login-container input[type="submit"],
+.login-container input[type="submit"]:active {
+  text-transform: uppercase !important;
   height: 30px !important;
   margin-bottom: 0px !important;
 }

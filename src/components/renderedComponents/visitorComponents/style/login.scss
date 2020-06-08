@@ -21,7 +21,9 @@
     margin-top: 10px;
     height: 50px !important;
   }
-  input[type="submit"] {
+  input[type="submit"],
+  input[type="submit"]:active {
+    text-transform: uppercase !important;
     height: 30px !important;
     margin-bottom: 0px !important;
   }

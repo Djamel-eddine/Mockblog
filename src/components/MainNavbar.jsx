@@ -2,17 +2,20 @@ import React, { useContext } from "react";
 import { UserContext } from "./resources/states/userContext";
 import { Link } from "react-router-dom";
 /* import { withRouter } from "react-router"; */
-import { library } from "@fortawesome/fontawesome-svg-core";
 import axios from "axios";
+import { library } from "@fortawesome/fontawesome-svg-core";
+
+import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon as Icon } from "@fortawesome/react-fontawesome";
+
 /* import { FontAwesomeIcon as Icon } from "@fortawesome/react-fontawesome"; */
-import { faAngellist } from "@fortawesome/free-brands-svg-icons";
 import "./style/css/main_navbar.css";
 
 //imporat icons and images
 import searchicon from "./resources/images/search.png";
 import userImg from "./resources/images/profile.png";
 
-library.add(faAngellist);
+library.add(faBars);
 
 const MainNavbar = (props) => {
   const { user, islogged, token } = useContext(UserContext);
@@ -20,30 +23,36 @@ const MainNavbar = (props) => {
   const [logged, setlogged] = islogged;
   const [Token] = token;
 
+  const onTrigger = (e) => {
+    /* const list = document.getElementsByClassName("navigation_menu");
+    list[0].classList.toggle("props"); */
+  };
   //use it when the user isn't logged in
   const visitor = () => {
     return (
       <div>
         <div className="navigation_menu">
-          <Link className="nav-item" to="/">
-            Home
-          </Link>
-          <Link className="nav-item" to="/about">
-            About
-          </Link>
-          <Link className="nav-item" to="/contact">
-            Contact-us
-          </Link>
-          <Link className="nav-item" to="/blog">
-            Blog
-          </Link>
+          <div className="toggeled">
+            <Link className="nav-item " to="/">
+              Home
+            </Link>
+            <Link className="nav-item" to="/about">
+              About
+            </Link>
+            <Link className="nav-item" to="/contact">
+              Contact-us
+            </Link>
+            <Link className="nav-item" to="/blog">
+              Blog
+            </Link>
 
-          <Link to="/register">
-            <button className="btn1">get started</button>
-          </Link>
+            <Link to="/register">
+              <button className="btn1">get started</button>
+            </Link>
+          </div>
         </div>
-        <button className="btn2" id="trigger">
-          disp
+        <button className="btn2" onClick={onTrigger} id="trigger">
+          <Icon icon={faBars} size="lg" />
         </button>
       </div>
     );
@@ -87,7 +96,7 @@ const MainNavbar = (props) => {
           </div>
         </div>
         <button className="btn2" id="trigger">
-          disp
+          <Icon icon={faBars} size="lg" />
         </button>
       </div>
     );
