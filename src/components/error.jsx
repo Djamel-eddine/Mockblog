@@ -5,11 +5,11 @@ import { UserContext } from "./resources/states/userContext";
 import "./style/css/error.css";
 
 const Error = () => {
-  const { posts } = useContext(UserContext);
-  const [Posts, setPosts] = posts;
+  /*const { posts } = useContext(UserContext);
+    const [Posts, setPosts] = posts;
   useEffect(() => {
     console.log("posts: ", Posts[0]);
-  }, []);
+  }, []); */
   return (
     <div className="error-container">
       <div>

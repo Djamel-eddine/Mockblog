@@ -94,6 +94,8 @@ const MainNavbar = (props) => {
   };
   /* logout methode */
   const logout = (e) => {
+    console.log("token: ", Token);
+
     axios
       .post("api/v1/logout", {
         headers: {
@@ -101,9 +103,12 @@ const MainNavbar = (props) => {
         },
       })
       .then((response) => {
-        if (response.status === 200) {
+        if (response.status === 201) {
           setlogged("false");
         }
+      })
+      .catch((e) => {
+        console.log("there is a problem with logout");
       });
     /* setlogged(!logged); */
 

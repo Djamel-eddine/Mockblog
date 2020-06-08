@@ -13,7 +13,6 @@ import outline_rectangle from "./resources/shapes/outline_rectangle.svg";
 type Info = {
   id: number,
   username: string,
-  nickname: string, //added
   email: string,
   password: string,
   is_active: Boolean,
@@ -194,7 +193,7 @@ const Register = (props: any) => {
           props.history.push(`/confirm`);
           setTimeout(() => {
             setlogged(true);
-            props.history.push(`/profile/user=:${userInfo["username"]}`);
+            props.history.push(`/login`);
             console.log(response.data);
           }, 2000);
         } else {

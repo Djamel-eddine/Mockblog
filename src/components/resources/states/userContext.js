@@ -28,12 +28,7 @@ export const UserProvider = (props) => {
     created_at: "",
     updated_at: "",
   });
-  const [Posts, setPosts] = useState([
-    {
-      0: { type: "header", data: { text: "dsfsd" } },
-      1: { type: "paragraph", data: { text: "dsfsd" } },
-    },
-  ]);
+  const [Posts, setPosts] = useState([]);
   return (
     <UserContext.Provider
       value={{
