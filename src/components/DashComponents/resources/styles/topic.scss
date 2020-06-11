@@ -1,0 +1,44 @@
+@import '../../../style/buttons';
+
+
+.topics-container{
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);  
+ 
+   
+    
+
+
+.topics-header{
+  margin: 2px;
+  border-bottom: solid 1pt $primary-color;
+  padding-bottom:.5rem !important;
+  margin: 0;
+  height: 2.5rem;
+  max-height: 2.5rem;
+  
+}
+
+.topics-body{
+  display: grid;
+  align-content: center;
+  margin: 2px;
+
+
+  .topic{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      margin:0;
+      padding:0;
+
+     div{
+       margin-right:1.5rem ;
+     }
+  }
+ 
+}
+
+
+}
+

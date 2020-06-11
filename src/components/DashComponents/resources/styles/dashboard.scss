@@ -1,0 +1,132 @@
+@import '../../../style/config.scss';
+@import 'topic.scss';
+@import 'postBody.scss';
+@import 'profileCard.scss';
+@import 'mobile.scss';
+
+
+.dash-container{
+    display: grid;
+    grid-template-rows: repeat(4, auto);  
+    padding: 4rem;
+    
+.topics-sec{
+margin: 10px;
+
+max-height: 8rem;
+}
+
+.saved-topics-sec{
+
+  margin-top: 7.5rem;
+  
+  .saved-posts-container{
+     .header{  
+       font-size: 48px;
+       font-family: $headers-font;
+       color: $secondary-color-darker;
+       text-transform: capitalize;
+       
+     }
+     .body{
+        margin-left:2rem;
+        display: grid;
+        grid-template-columns: 2px auto auto;  
+    
+        
+      .line{    
+         background-color: $primary-color; 
+         height: 10rem;
+         max-height: 10rem;
+      }
+      .sm-posts{
+        margin-left:2rem;
+      }
+
+     
+     }
+
+  }
+}
+
+.latest-posts-sec{
+
+  margin-top: 7.5rem;
+
+  .latest-posts-container{
+   .header{  
+       text-align: end;
+       font-size: 48px;
+       font-family: $headers-font;
+       font-weight: 900;
+       color: $secondary-color-darker;
+       text-transform: capitalize;   
+     }
+     .body{
+        margin-left:2rem;
+        display: grid;
+        grid-template-columns: auto auto 2px ;  
+   
+        
+      .line{    
+         background-color: $primary-color; 
+         height: 10rem;
+         max-height: 10rem;
+      }
+      .sm-posts{
+        margin-left:2rem;
+        
+      }
+     }
+ }
+}
+
+
+.seemore-sec{
+   .saved-posts-container{
+     margin-top: 7.5rem;
+     .header{  
+       font-size: 48px;
+       font-family: $headers-font;
+       font-weight: 900;
+       color: $secondary-color-darker;
+       text-transform: capitalize;
+       
+     }
+     .body{
+        margin-left:2rem;
+        display: grid;
+        grid-template-columns: 2px auto;  
+      
+        
+      .line{    
+         background-color: $primary-color; 
+         height: 10rem;
+         max-height: 10rem;
+      }
+
+      .wrapper{
+        display: grid;
+        grid-template-columns: 70% 30% ;  
+        border-bottom: 1pt solid $primary-color;
+
+        .posts{
+            grid-column-start: 1;
+            grid-row-start: 1 ;
+        }
+
+        .card-container{
+           grid-column-start: 2 ;
+           grid-row-start: 1 ;
+        }
+     }    
+     }
+
+  }
+
+}
+
+
+
+}
+

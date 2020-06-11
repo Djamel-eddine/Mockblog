@@ -1,0 +1,112 @@
+@media only screen and (max-width: 1031px) {
+
+.saved-topics-sec{
+ 
+  .saved-posts-container{
+     .header{  
+       font-size: 32px !important;
+     }
+     .body{
+        margin-left:1rem !important;
+        grid-template-columns: 2px auto !important;  
+      .sm-posts{
+      
+        margin-left:1rem !important;
+      }
+      .lg-posts{
+          grid-column-start: 2;
+      }
+     }
+  }
+}
+
+.latest-posts-sec{  
+  .latest-posts-container{
+   .header{  
+       font-size: 32px !important;
+     }
+     .body{
+        margin-left:1rem;
+        grid-template-columns:auto 2px !important;  
+ 
+        .line{ 
+             grid-column-start: 2 !important;
+             margin-top: -13rem;
+        }
+       .sm-posts{
+        margin-left:0rem !important;
+         grid-column-start: 1 !important;
+      }
+      .lg-posts{
+          grid-column-start: 1 !important;
+         
+      }
+     }
+ }
+}
+.seemore-sec{
+   .saved-posts-container{
+     .header{  
+       font-size: 32px !important; 
+     }
+     .body{
+        margin-left:1rem !important;  
+     }
+        .wrapper{
+        display: grid;
+         grid-template-columns: 1fr !important ;  
+        grid-template-rows: repeat(2, auto) !important ;  
+        .posts{
+            max-height: 100%;
+            grid-column-start: 1 !important;
+            grid-row-start: 2 !important;
+
+        }
+
+        .card-container{
+           grid-column-start: 1 !important;
+           grid-row-start: 1 !important;
+           
+           display: flex;
+           position: relative;
+          
+
+           .img-placeholder{  
+              height: 1.1rem !important; 
+                max-height: 3.1rem !important; 
+               img{
+                width:3.1rem;
+                max-width: 3.1rem;   
+                border-radius: 50%;
+             }
+}
+
+
+           h3{
+             font-size: 18px;
+             margin-top:.2rem;
+             margin-left:1rem;
+           }
+           h5{
+             font-size: 11px;
+             margin-left:1rem;
+          
+           }
+
+          .insights-placeholder{
+             padding-top:0;
+             margin-top:0;
+             margin-left:auto !important;
+            position: absolute;
+            right: 0;
+           }
+        }
+
+     
+  }
+}
+
+}
+
+}
+
