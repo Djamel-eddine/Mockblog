@@ -4,6 +4,7 @@ import Paragraph from "@editorjs/paragraph";
 import List from "@editorjs/list";
 import Warning from "@editorjs/warning";
 import Code from "@editorjs/code";
+import CodeBox from "@bomdi/codebox"
 import LinkTool from "@editorjs/link";
 
 import Raw from "@editorjs/raw";
@@ -20,9 +21,18 @@ export const Tools = {
   paragraph: Paragraph,
   list: List,
   warning: Warning,
-  code: Code,
+ /*  code: Code, */
+  codeBox: {
+      class: CodeBox,
+      /* config: {
+        themeURL: 'https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.1/build/styles/dracula.min.css', // Optional
+        themeName: 'atom-one-dark', // Optional
+        useDefaultTheme: 'light' // Optional. This also determines the background color of the language select drop-down
+      } */
+    },
+    raw: Raw,
   linkTool: LinkTool,
-  raw: Raw,
+  
   header: Header,
   quote: Quote,
   marker: Marker,

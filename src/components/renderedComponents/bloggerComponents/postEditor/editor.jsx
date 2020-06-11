@@ -9,11 +9,15 @@ const Editor = (props) => {
   const [Token, setToken] = token;
   const [Posts, setPosts] = posts;
   const [User, setUser] = user;
-  const [title, settitle] = useState("");
-  const [desc, setdesc] = useState("");
+  const [title, settitle] = useState("No title");
+  const [desc, setdesc] = useState("No description");
+  
+  /* var editor; */
+  const [editor, seteditor] = useState("")
+  
+  let outputData;
   const data = {};
-  var editor = null;
-  let outputData = [];
+  
   const onTitleChange = (e) => {
     settitle(e.target.innerText);
   };
@@ -23,20 +27,22 @@ const Editor = (props) => {
   const displayData = async () => {
     /* await editor.save();
     console.log(editor); */
+    
     try {
       outputData = await editor.save();
       const output = [outputData];
+      
       console.log("Article data: ", output);
       const new_posts_list = output.concat(Posts);
       setPosts(new_posts_list);
-      props.history.push("/article/19");
+      props.history.push("/seepost");
       /*  axios
         .post(
           "https://mockblog-api.herokuapp.com/api/v1/posts",
           {
             user_id: UserContext["_id"],
-            title: "",
-            desc: "",
+            title,
+            desc,
             body: outputData,
             tags: [],
             published: true,
@@ -76,11 +82,21 @@ const Editor = (props) => {
         caption here
       </h3>
       <EditorJs
-        data={data}
+        /* data={data} */
         tools={Tools}
-        instanceRef={(editorInstance) => {
+        instanceRef={async (editorInstance) => {
           // invoked once the editorInstance is ready
-          editor = editorInstance;
+          //still some work here must execute 
+           
+        
+          try {
+            seteditor(editorInstance)
+            outputData = await editor.save();
+          } catch (error) {
+            console.log("here we have an error of .save() shit");
+            
+          }
+            
         }}
       />
       <button onClick={displayData}>display</button>

@@ -23,6 +23,9 @@ import EditProfile from "./renderedComponents/bloggerComponents/edit-profile.jsx
 import Editor from "./renderedComponents/bloggerComponents/postEditor/editor.jsx";
 import UpdatePost from "./renderedComponents/bloggerComponents/updatePost/updatePost.jsx";
 
+//for debug components
+import SeePost from "./renderedComponents/bloggerComponents/postEditor/seePosts.jsx";
+
 //states
 import { UserContext } from "./resources/states/userContext";
 
@@ -54,7 +57,20 @@ const Home = (props) => {
           path="/profile/user=:user"
           component={logged ? Profile : Main}
         />
-        <Route path="/article/:id" component={logged ? Article : Main} />
+        <Route
+          path="/article/article id=:id"
+          /* component={logged ? Article : Main} */ render={(props) => {
+            const postId = props.location.pathname.replace(
+              "/article/article id=",
+              ""
+            );
+            if (logged === false) {
+              return <Main />;
+            } else {
+              return <Article id={postId} />;
+            }
+          }}
+        />
         <Route
           path="/acount/password/token=:token"
           render={(props) => {
@@ -67,6 +83,7 @@ const Home = (props) => {
         />
         <Route path="/post_editor" component={Editor} />
         <Route path="/update_post" component={UpdatePost} />
+        <Route path="/seepost" component={SeePost}/>
         <Route component={Error} />
       </Switch>
       <Footer />
