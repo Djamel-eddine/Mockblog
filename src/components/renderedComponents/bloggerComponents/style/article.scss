@@ -1,0 +1,36 @@
+@import "../../../style/config";
+.seepost-container {
+  width: 70vw;
+  margin: 100px 15vw;
+
+  h1 {
+    font-family: $headers-font;
+  }
+  h3 {
+    padding: none;
+    padding-left: 20px;
+    border-left: solid 1px $info-color;
+    color: $secondary-color;
+    font-family: $paragraph-font;
+    font-weight: 400;
+  }
+  .blocksContainer {
+    display: grid;
+    place-items: center center;
+    .postBlocks {
+      box-sizing: border-box;
+      padding: 50px;
+      width: 80%;
+      @for $var from 1 to 6 {
+        h#{$var} {
+          font-family: $headers-font !important;
+          color: $secondary-color-darker;
+        }
+      }
+      ol,
+      ul {
+        padding-left: 30px;
+      }
+    }
+  }
+}

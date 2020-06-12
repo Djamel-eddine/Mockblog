@@ -1,0 +1,42 @@
+@import "../../../style/config";
+
+.post-container {
+  display: grid;
+  /* width: 100%; */
+  grid-template-columns: 1fr 50px;
+  grid-gap: 50px;
+  border-bottom: solid 2px $secondary-color;
+  padding-bottom: 20px;
+  margin-bottom: 30px;
+  .post-properties {
+    display: grid;
+    align-content: space-around;
+    justify-items: flex-end;
+    button {
+      border: none;
+      background-color: none;
+    }
+  }
+  .post-description {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    .posted-date {
+      align-self: flex-start;
+      justify-self: flex-end;
+      color: $secondary-color;
+    }
+    p,
+    .post-interactions {
+      grid-column: 1/-1;
+    }
+    .post-interactions {
+      display: grid;
+      grid-template-columns: repeat(3, auto);
+      justify-content: start;
+      grid-gap: 30px;
+      .icon {
+        margin-right: 5px;
+      }
+    }
+  }
+}

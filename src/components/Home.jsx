@@ -58,16 +58,17 @@ const Home = (props) => {
           component={logged ? Profile : Main}
         />
         <Route
-          path="/article/article id=:id"
-          /* component={logged ? Article : Main} */ render={(props) => {
+          path="/post/post_id=:id"
+          /* component={logged ? post : Main} */ render={(props) => {
             const postId = props.location.pathname.replace(
-              "/article/article id=",
+              "/post/post_id=",
               ""
             );
+            const history = props.history;
             if (logged === false) {
               return <Main />;
             } else {
-              return <Article id={postId} />;
+              return <Article id={postId} history={history} />;
             }
           }}
         />
@@ -82,8 +83,14 @@ const Home = (props) => {
           }}
         />
         <Route path="/post_editor" component={Editor} />
-        <Route path="/update_post" component={UpdatePost} />
-        <Route path="/seepost" component={SeePost}/>
+        <Route
+          path="/update_post/id=:id"
+          render={(props) => {
+            const id = props.location.pathname.replace("/update_post/id=", "");
+            return <UpdatePost id={id} />;
+          }}
+        />
+        <Route path="/seepost" component={SeePost} />
         <Route component={Error} />
       </Switch>
       <Footer />

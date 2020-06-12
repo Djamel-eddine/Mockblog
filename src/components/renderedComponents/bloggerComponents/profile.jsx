@@ -9,10 +9,17 @@ import profile_pic from "../../resources/images/profile.png";
 import orange_Ellipse from "./resources/shapes/orange_Ellipse.svg";
 import outline_rectangle from "./resources/shapes/outline_rectangle.svg";
 
-const Profile = () => {
-  const { user } = useContext(UserContext);
+const Profile = (props) => {
+  const { user, posts } = useContext(UserContext);
   const [userInf] = user;
+  const [Posts, setPosts] = posts;
   /*  const [logged, setlogged] = islogged; */
+
+  useEffect(() => {
+    console.log(
+      "----------------------- reload again ---------------------------"
+    );
+  }, []);
 
   return (
     <div className="main-profile-container">
@@ -34,7 +41,7 @@ const Profile = () => {
           <div className="body">
             <h2>{/* {userInf["profile"]["firstname"]} */} first name</h2>
             <ul className="blog-infos">
-              <li>posts: {/* {userInf["profile"]["posts"].length} */} 0</li>
+              <li>posts: {Posts.length}</li>
               <li>Followers: {userInf["profile"]["followers"].length} </li>
               <li>
                 Following: {/* {userInf["profile"]["follows"].length} */} 0
@@ -58,7 +65,17 @@ const Profile = () => {
             <button className="toposts">Posts</button>
             <button className="tosaved">Saved</button>
           </div>
-          <Post />
+          <div className="posts">
+            {Posts.map((post, i) => (
+              <Post
+                key={i}
+                id={post["time"]}
+                title={post.title}
+                desc={post.desc}
+                history={props.history}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </div>

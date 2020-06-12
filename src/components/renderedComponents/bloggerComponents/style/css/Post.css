@@ -64,51 +64,56 @@ body {
   text-shadow: 0 0 2px #6f8191;
 }
 
-.editor-container {
-  width: 70vw;
+.post-container {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 1fr;
-      grid-template-columns: 1fr;
-  margin: 100px 15vw;
+  width: 100%;
+  -ms-grid-columns: 1fr 50px;
+      grid-template-columns: 1fr 50px;
+  grid-gap: 50px;
+  border-bottom: solid 2px #6f8191;
+  padding-bottom: 20px;
+  margin-bottom: 30px;
 }
 
-.editor-container #title {
-  font-family: "Merriweather", serif;
+.post-container .post-properties {
+  display: -ms-grid;
+  display: grid;
+  -ms-flex-line-pack: distribute;
+      align-content: space-around;
+  justify-items: flex-end;
+}
+
+.post-container .post-description {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 2fr 1fr;
+      grid-template-columns: 2fr 1fr;
+}
+
+.post-container .post-description .posted-date {
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  justify-self: flex-end;
   color: #6f8191;
-  font-size: 28px;
-  text-transform: capitalize;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 3px;
 }
 
-.editor-container #title:focus {
-  border-left: solid 3px #77c1fd;
+.post-container .post-description p,
+.post-container .post-description .post-interactions {
+  grid-column: 1/-1;
 }
 
-.editor-container textarea {
-  border: none;
-  padding: 10px;
-  margin: 10px;
-  border-radius: 2px;
-  resize: none;
-  overflow: hidden;
-  height: 42px;
-  text-justify: auto;
-  font-size: 16px;
+.post-container .post-description .post-interactions {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (auto)[3];
+      grid-template-columns: repeat(3, auto);
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  grid-gap: 30px;
 }
 
-.editor-container textarea:focus {
-  border-left: solid 2px #77c1fd;
-}
-
-.editor-container .ce-paragraph {
-  padding-left: 20px;
-}
-
-.editor-container .ce-paragraph:focus {
-  -webkit-box-shadow: 0 0 5px #77c1fd;
-          box-shadow: 0 0 5px #77c1fd;
-  border-radius: 5px;
+.post-container .post-description .post-interactions .icon {
+  margin-right: 5px;
 }

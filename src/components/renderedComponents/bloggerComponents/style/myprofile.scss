@@ -30,10 +30,15 @@
     }
     .my-infos {
       display: grid;
+      grid-template-rows: 100px auto auto;
+      align-content: flex-start;
       .header {
         display: grid;
         grid-template-columns: 100px 1fr;
+
         align-items: center;
+        margin: none;
+        padding: none;
         img {
           z-index: 1 !important;
           height: 100px;
@@ -53,6 +58,7 @@
         margin-left: 50px;
         border-left: solid 1px $primary-color;
         padding-left: 20px;
+        align-self: flex-start;
         h2 {
           margin: 0;
           padding: o;
@@ -81,6 +87,9 @@
       }
     }
     .posts-area {
+      .posts {
+        padding: 50px;
+      }
       background-color: white;
       box-shadow: 0 0 20px rgba($color: $secondary-color, $alpha: 0.8);
       .header {
@@ -132,7 +141,7 @@
         margin-left: 0px !important;
         ul {
           .ordinary-link {
-            display: inline !important;
+            display: block !important;
             text-decoration: none;
             color: $primary-color;
             font-weight: bolder;
@@ -157,6 +166,7 @@
     }
     .posts-area {
       grid-column: 1/-1 !important;
+      margin-top: 100px;
     }
   }
 }

@@ -2,17 +2,26 @@ import React, { useState, useContext, useEffect } from "react";
 import EditorJs from "react-editor-js";
 import { UserContext } from "../../../resources/states/userContext";
 import { Tools } from "../postEditor/tools";
+import "../postEditor/css/editor.css";
 import axios from "axios";
 
 const UpdatePost = (props) => {
   const { posts, token } = useContext(UserContext);
   const [Posts, setPosts] = posts;
   const [Token, setToken] = token;
+  const id = props.id;
   var editor = null;
   let outputData = [];
+  const [target, settarget] = useState({});
   useEffect(() => {
-    console.log("posts: ", Posts[0]);
+    const targ = Posts.filter((post) => {
+      return post.time === id;
+    });
+    settarget(targ);
+
+    console.log("target: ", target);
   }, []);
+
   const onSave = async () => {
     /* await editor.save();
     console.log(editor); */
@@ -62,8 +71,24 @@ const UpdatePost = (props) => {
 
   return (
     <div className="editor-container">
+      <input
+        /* onChange={onTitleChange} */
+        type="text"
+        name="title"
+        id="title"
+        placeholder={target.title}
+      />
+
+      <textarea
+        /* onInput={onDescChange} */
+        name="description"
+        id="description"
+        cols="30"
+        rows="10"
+        placeholder={target.desc}
+      ></textarea>
       <EditorJs
-        data={Posts[0]}
+        data={target}
         tools={Tools}
         instanceRef={(editorInstance) => {
           // invoked once the editorInstance is ready

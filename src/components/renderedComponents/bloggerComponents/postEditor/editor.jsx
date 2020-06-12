@@ -11,31 +11,38 @@ const Editor = (props) => {
   const [User, setUser] = user;
   const [title, settitle] = useState("No title");
   const [desc, setdesc] = useState("No description");
-  
+
   /* var editor; */
-  const [editor, seteditor] = useState("")
-  
+  const [editor, seteditor] = useState("");
+
   let outputData;
   const data = {};
-  
+
   const onTitleChange = (e) => {
-    settitle(e.target.innerText);
+    settitle(e.target.value);
+    console.log(e.target.style);
   };
   const onDescChange = (e) => {
-    setdesc(e.target.innerText);
+    setdesc(e.target.value);
+    /* e.targer.style.height = e.targer.scrollHeight + "px"; */
+    const desc = document.getElementById("description");
+    desc.style.height = desc.scrollHeight + "px";
+    /* console.log(e.target.style.height); */
   };
   const displayData = async () => {
     /* await editor.save();
     console.log(editor); */
-    
+
     try {
       outputData = await editor.save();
+      outputData.title = title;
+      outputData.desc = desc;
       const output = [outputData];
-      
+
       console.log("Article data: ", output);
       const new_posts_list = output.concat(Posts);
       setPosts(new_posts_list);
-      props.history.push("/seepost");
+      props.history.push(`/profile/user=:${User["username"]}`);
       /*  axios
         .post(
           "https://mockblog-api.herokuapp.com/api/v1/posts",
@@ -75,28 +82,37 @@ const Editor = (props) => {
 
   return (
     <div className="editor-container">
-      <h1 onBlur={onTitleChange} contentEditable suppressContentEditableWarning>
-        title
-      </h1>
-      <h3 onBlur={onDescChange} contentEditable suppressContentEditableWarning>
-        caption here
-      </h3>
+      <input
+        onChange={onTitleChange}
+        type="text"
+        name="title"
+        id="title"
+        placeholder="Title"
+      />
+
+      <textarea
+        onInput={onDescChange}
+        name="description"
+        id="description"
+        cols="30"
+        rows="10"
+        placeholder="description"
+      ></textarea>
+
       <EditorJs
         /* data={data} */
+        autofocus={true}
         tools={Tools}
         instanceRef={async (editorInstance) => {
           // invoked once the editorInstance is ready
-          //still some work here must execute 
-           
-        
+          //still some work here must execute
+
           try {
-            seteditor(editorInstance)
+            seteditor(editorInstance);
             outputData = await editor.save();
           } catch (error) {
             console.log("here we have an error of .save() shit");
-            
           }
-            
         }}
       />
       <button onClick={displayData}>display</button>
