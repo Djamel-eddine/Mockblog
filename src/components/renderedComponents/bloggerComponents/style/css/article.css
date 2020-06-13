@@ -1,0 +1,126 @@
+* {
+  margin: 0;
+  padding: 0;
+  /* border: none; */
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  width: 100vw;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.fig-back1 {
+  position: absolute;
+  height: 400px;
+  left: -250px;
+}
+
+.shape1 {
+  position: absolute;
+  top: 200px;
+  left: -120px;
+  opacity: 20%;
+  height: 400px;
+  -webkit-transform: rotate(20deg);
+          transform: rotate(20deg);
+}
+
+.shape2 {
+  position: absolute;
+  top: 400px;
+  right: -500px;
+  height: 750px;
+  opacity: 25%;
+  -webkit-transform: rotate(10deg);
+          transform: rotate(10deg);
+}
+
+.shape3 {
+  position: absolute;
+  top: 700px;
+  left: -30px;
+  height: 200px;
+  opacity: 50%;
+  z-index: -1;
+}
+
+#error-area {
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  display: -ms-grid;
+  display: grid;
+  height: 0px;
+  background-color: rgba(255, 123, 96, 0.5);
+  -webkit-box-shadow: 0 0 10px #ff7b60;
+          box-shadow: 0 0 10px #ff7b60;
+  grid-column: 1/-1;
+  place-content: center center;
+  width: 100%;
+  font-family: "Merriweather", serif;
+  font-weight: 500;
+  text-shadow: 0 0 2px #6f8191;
+}
+
+.seepost-container {
+  width: 70vw;
+  margin: 100px 15vw;
+}
+
+.seepost-container h1 {
+  font-family: "Merriweather", serif;
+}
+
+.seepost-container h3 {
+  padding: none;
+  padding-left: 20px;
+  border-left: solid 1px #77c1fd;
+  color: #6f8191;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+}
+
+.seepost-container .blocksContainer {
+  display: -ms-grid;
+  display: grid;
+  place-items: center center;
+}
+
+.seepost-container .blocksContainer .postBlocks {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 50px;
+  width: 80%;
+}
+
+.seepost-container .blocksContainer .postBlocks h1 {
+  font-family: "Merriweather", serif !important;
+  color: #1a1e23;
+}
+
+.seepost-container .blocksContainer .postBlocks h2 {
+  font-family: "Merriweather", serif !important;
+  color: #1a1e23;
+}
+
+.seepost-container .blocksContainer .postBlocks h3 {
+  font-family: "Merriweather", serif !important;
+  color: #1a1e23;
+}
+
+.seepost-container .blocksContainer .postBlocks h4 {
+  font-family: "Merriweather", serif !important;
+  color: #1a1e23;
+}
+
+.seepost-container .blocksContainer .postBlocks h5 {
+  font-family: "Merriweather", serif !important;
+  color: #1a1e23;
+}
+
+.seepost-container .blocksContainer .postBlocks ol,
+.seepost-container .blocksContainer .postBlocks ul {
+  padding-left: 30px;
+}

@@ -67,7 +67,7 @@ body {
 .post-container {
   display: -ms-grid;
   display: grid;
-  width: 100%;
+  /* width: 100%; */
   -ms-grid-columns: 1fr 50px;
       grid-template-columns: 1fr 50px;
   grid-gap: 50px;
@@ -82,6 +82,11 @@ body {
   -ms-flex-line-pack: distribute;
       align-content: space-around;
   justify-items: flex-end;
+}
+
+.post-container .post-properties button {
+  border: none;
+  background-color: none;
 }
 
 .post-container .post-description {

@@ -3,7 +3,28 @@ import EditorJs from "react-editor-js";
 import { UserContext } from "../../../resources/states/userContext";
 import { Tools } from "./tools";
 import axios from "axios";
-import "./css/editor.css";
+import "./editor.scss";
+import TagEditor from "react-tageditor";
+
+/* import Taggle from "taggle";
+var text = document.getElementById("example-event");
+
+// Make sure to return true or false in onBeforeTagAdd and onBeforeTagRemove
+new Taggle("example", {
+  onBeforeTagAdd: function (event, tag) {
+    return window.confirm("You really wanna add " + tag + "?");
+  },
+  onTagAdd: function (event, tag) {
+    text.innerHTML = "You just added " + tag;
+  },
+  onBeforeTagRemove: function (event, tag) {
+    return window.confirm("You really wanna remove " + tag + "?");
+  },
+  onTagRemove: function (event, tag) {
+    text.innerHTML = "You just removed " + tag;
+  },
+}); */
+
 const Editor = (props) => {
   const { user, posts, token } = useContext(UserContext);
   const [Token, setToken] = token;
@@ -11,6 +32,7 @@ const Editor = (props) => {
   const [User, setUser] = user;
   const [title, settitle] = useState("No title");
   const [desc, setdesc] = useState("No description");
+  const [tags, settags] = useState([]);
 
   /* var editor; */
   const [editor, seteditor] = useState("");
@@ -51,7 +73,7 @@ const Editor = (props) => {
             title,
             desc,
             body: outputData,
-            tags: [],
+            tags,
             published: true,
           },
           {
@@ -79,7 +101,9 @@ const Editor = (props) => {
       console.log("Saving failed: ", e);
     }
   };
-
+  const handleTagsChange = async (tagsChanged, allTags, action) => {
+    settags(await allTags);
+  };
   return (
     <div className="editor-container">
       <input
@@ -89,7 +113,6 @@ const Editor = (props) => {
         id="title"
         placeholder="Title"
       />
-
       <textarea
         onInput={onDescChange}
         name="description"
@@ -98,7 +121,6 @@ const Editor = (props) => {
         rows="10"
         placeholder="description"
       ></textarea>
-
       <EditorJs
         /* data={data} */
         autofocus={true}
@@ -115,7 +137,17 @@ const Editor = (props) => {
           }
         }}
       />
-      <button onClick={displayData}>display</button>
+      {/* <TagEditor tags={[]} delimiters={[]} placeholder="tags" /> */}
+      <TagEditor
+        tags={tags}
+        delimiters={[13, ","]}
+        placeholder="add tags..."
+        onChange={handleTagsChange}
+      />
+      {/* <div className="output">Tags output: {tags.join(", ")}</div> */}
+      <button className="btn1" onClick={displayData}>
+        SAVE
+      </button>
     </div>
   );
 };
