@@ -1,23 +1,20 @@
-import React, { useContext, useState, useEffect } from "react";
-import { UserContext } from "../../resources/states/userContext";
+import React, { useState, useEffect } from "react";
+
 import Output from "editorjs-react-renderer";
 import Axios from "axios";
-import { withRouter } from "react-router-dom";
 
 function Article(props) {
-  const { posts } = useContext(UserContext);
-  const [Posts, setPosts] = posts;
-  let body = null;
-  let title = "";
-  let desc = "";
+  const [body, setbody] = useState({});
+  const [title, settitle] = useState("");
+  const [desc, setdesc] = useState("");
   const postId = props["id"];
   useEffect(() => {
     Axios.get(`/api/v1/posts/${postId}`)
       .then((response) => {
         if (response.status === 200) {
-          body = response.post.body;
-          title = response.post.title;
-          desc = response.post.desc;
+          setbody(response.post.body);
+          settitle(response.post.title);
+          setdesc(response.post.desc);
         } else {
           console.log("there is a problem");
         }
@@ -31,7 +28,11 @@ function Article(props) {
     <div className="post-container">
       <h1>{`${title}`}</h1>
       <h3>{`${desc}`}</h3>
-      <Output data={body} />
+      <div className="blocksContainer">
+        <div className="postBlocks">
+          <Output data={body} />
+        </div>
+      </div>
     </div>
   );
 }

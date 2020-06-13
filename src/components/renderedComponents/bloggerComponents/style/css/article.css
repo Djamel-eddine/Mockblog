@@ -89,6 +89,9 @@ body {
 }
 
 .seepost-container .blocksContainer .postBlocks {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   padding: 50px;
@@ -123,4 +126,18 @@ body {
 .seepost-container .blocksContainer .postBlocks ol,
 .seepost-container .blocksContainer .postBlocks ul {
   padding-left: 30px;
+}
+
+.seepost-container .blocksContainer .postBlocks table {
+  width: 100%;
+  display: -ms-grid !important;
+  display: grid !important;
+  -ms-grid-columns: 1fr !important;
+      grid-template-columns: 1fr !important;
+  justify-items: center !important;
+}
+
+.seepost-container .blocksContainer .postBlocks table th {
+  background-color: #77c1fd !important;
+  color: white;
 }
