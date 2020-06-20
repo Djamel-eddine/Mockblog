@@ -9,7 +9,7 @@ function Article(props) {
   const [desc, setdesc] = useState("");
   const postId = props["id"];
   useEffect(() => {
-    Axios.get(`/api/v1/posts/${postId}`)
+    Axios.get(`http://localhost:5000/api/v1/posts/${postId}`)
       .then((response) => {
         if (response.status === 200) {
           setbody(response.post.body);

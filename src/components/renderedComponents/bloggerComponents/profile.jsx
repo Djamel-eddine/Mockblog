@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../resources/states/userContext";
 import { Link } from "react-router-dom";
 import Post from "./Post";
@@ -8,19 +8,40 @@ import "./style/css/myprofile.css";
 import profile_pic from "../../resources/images/profile.png";
 import orange_Ellipse from "./resources/shapes/orange_Ellipse.svg";
 import outline_rectangle from "./resources/shapes/outline_rectangle.svg";
+import axios from "axios";
 
 const Profile = (props) => {
   const { user, posts } = useContext(UserContext);
   const [userInf] = user;
   const [Posts, setPosts] = posts;
+  const [savedPosts, setsavedPosts] = useState([]);
+  const [showSavedPosts, setshowSavedPosts] = useState(false);
   /*  const [logged, setlogged] = islogged; */
 
   useEffect(() => {
     console.log(
       "----------------------- reload again ---------------------------"
     );
+    axios
+      .get(`http://localhost:5000/api/v1/${userInf["username"]}/posts`)
+      .then((response) => {
+        if (response.status === 200) {
+          setPosts(response.msgs.Posts);
+        } else {
+          alert(response.msgs);
+        }
+      })
+      .catch((e) => {
+        console.log("404 status");
+      });
   }, []);
 
+  const showSaved = () => {
+    setshowSavedPosts(true);
+  };
+  const showMyPosts = () => {
+    setshowSavedPosts(false);
+  };
   return (
     <div className="main-profile-container">
       <img className="shape shape1" src={outline_rectangle} alt="shape1" />
@@ -62,19 +83,33 @@ const Profile = (props) => {
         </div>
         <div className="posts-area">
           <div className="header">
-            <button className="toposts">Posts</button>
-            <button className="tosaved">Saved</button>
+            <button onClick={showMyPosts} className="toposts">
+              Posts
+            </button>
+            <button onClick={showSaved} className="tosaved">
+              Saved
+            </button>
           </div>
           <div className="posts">
-            {Posts.map((post, i) => (
-              <Post
-                key={i}
-                id={post["time"]}
-                title={post.title}
-                desc={post.desc}
-                history={props.history}
-              />
-            ))}
+            {showSavedPosts
+              ? savedPosts.map((post, i) => (
+                  <Post
+                    key={i}
+                    id={post["post_id"]}
+                    title={post.title}
+                    desc={post.desc}
+                    history={props.history}
+                  />
+                ))
+              : Posts.map((post, i) => (
+                  <Post
+                    key={i}
+                    id={post["post_id"]}
+                    title={post.title}
+                    desc={post.desc}
+                    history={props.history}
+                  />
+                ))}
           </div>
         </div>
       </div>

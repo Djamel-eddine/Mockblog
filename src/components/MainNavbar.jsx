@@ -90,9 +90,9 @@ const MainNavbar = (props) => {
               Edit profile
             </Link>
             <div></div>
-            <Link to="/" className="prop-list-item" onClick={logout}>
+            <span className="prop-list-item" onClick={logout}>
               logout
-            </Link>
+            </span>
           </div>
         </div>
         <button className="btn2" id="trigger">
@@ -106,7 +106,7 @@ const MainNavbar = (props) => {
     console.log("token: ", Token);
 
     axios
-      .post("api/v1/logout", {
+      .post("http://localhost:5000/api/v1/logout", {
         headers: {
           Authorization: `Bearer ${Token}`,
         },
@@ -114,25 +114,15 @@ const MainNavbar = (props) => {
       .then((response) => {
         if (response.status === 201) {
           setlogged("false");
+          const propnav = document.getElementsByClassName("props");
+          propnav[0].classList.toggle("prop-list");
         }
       })
       .catch((e) => {
         console.log("there is a problem with logout");
       });
     /* setlogged(!logged); */
-
-    const propnav = document.getElementsByClassName("props");
-    propnav[0].classList.toggle("prop-list");
   };
-  /* document.querySelector("body").click(function (event) {
-    const target = event.target;
-    if (
-      !target.closest("#prop-list").length &&
-      document.getElementById("#prop-list").is(":visible")
-    ) {
-      document.getElementById("#prop-list").hide();
-    }
-  }); */
 
   //
   const dispList = (e) => {

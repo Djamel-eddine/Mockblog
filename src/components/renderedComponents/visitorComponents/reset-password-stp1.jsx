@@ -16,7 +16,7 @@ const Reset1 = (props: any) => {
   const checkemail = (e) => {
     if (/^\w+([-]?\w+)*@\w+([-]?\w+)*(\.\w{2,3})+$/.test(email)) {
       axios
-        .post(`/api/v1/reset?email=${email}`)
+        .post(`http://localhost:5000/api/v1/reset?email=${email}`)
         .then((response) => {
           response.status === 200
             ? setmailExist(true)
@@ -32,7 +32,7 @@ const Reset1 = (props: any) => {
   const sendRegisterRequest = (e) => {
     e.preventDefault();
     axios
-      .post("/api/v1/user/password/reset", {
+      .post("http://localhost:5000/api/v1/user/password/reset", {
         email,
       })
       .then((response) => {

@@ -6,96 +6,125 @@ import "../postEditor/css/editor.css";
 import axios from "axios";
 
 const UpdatePost = (props) => {
-  const { posts, token } = useContext(UserContext);
+  const { posts, token, user } = useContext(UserContext);
   const [Posts, setPosts] = posts;
   const [Token, setToken] = token;
+  const [User, setUser] = user;
+  const [editor, seteditor] = useState("");
   const id = props.id;
-  var editor = null;
   let outputData = [];
   const [target, settarget] = useState({});
+  const [desc, setdesc] = useState(target.desc);
+  const [title, settitle] = useState(target.title);
   useEffect(() => {
-    const targ = Posts.filter((post) => {
-      return post.time === id;
-    });
-    settarget(targ);
-
-    console.log("target: ", target);
+    axios
+      .get(`http://localhost:5000/api/v1/${User["username"]}/posts/${id}`)
+      .then((response) => {
+        settarget(response.msgs.Post);
+      })
+      .catch((e) => {
+        console.log("problem occure when try retrieving the post");
+      });
   }, []);
 
-  const onSave = async () => {
-    /* await editor.save();
-    console.log(editor); */
+  const onDescChange = (e) => {
+    setdesc(e.target.value);
+    const desc = document.getElementById("description");
+    desc.style.height = desc.scrollHeight + "px";
+  };
+  const onTitleChange = (e) => {
+    settitle(e.target.value);
+    console.log(e.target.style);
+  };
+  const sendPost = async (published) => {
     try {
       outputData = await editor.save();
-      const data = [outputData];
-      console.log("Article data: ", data);
-      const new_posts_list = [...Posts];
-      new_posts_list[0] = data;
+      outputData.title = title;
+      outputData.desc = desc;
+      /* const output = [outputData];
+
+      console.log("Article data: ", output);
+      const new_posts_list = output.concat(Posts);
       setPosts(new_posts_list);
+      props.history.push(`/profile/user=:${User["username"]}`); */
       axios
         .put(
-          "https://mockblog-api.herokuapp.com/api/v1/posts/post",
+          `http://localhost:5000/api/v1/${User["username"]}/posts/${target["post_id"]}`,
           {
-            user_id: UserContext["_id"],
-            title: "",
-            desc: "",
-            body: outputData,
-            tags: [],
-            published: true,
+            Title: title,
+            Desc: desc,
+            Body: outputData,
+            Tags: target.tags,
+            Published: published,
           },
           {
             headers: { Authorization: `Bearer ${Token}` },
           }
         )
         .then((response) => {
-          if (response.status === 201) {
+          if (response.status === 200) {
             props.history.push(`/confirm`);
+            setTimeout(() => {
+              props.history.push(`/profile/user=:${User["username"]}`);
+            }, 1600);
           } else {
             alert("there is problem here ");
           }
         })
         .catch((err) => {
-          /* console.log(err); 
-          const area = document.getElementById("error-area");
-          area.innerText = "there a problem";
-          area.style.height = "50px";
-
-          setTimeout(() => {
-            props.history.push("/register");
-          }, 2000);*/
+          console.log("404 error shit ");
         });
     } catch (e) {
-      console.log("Saving failed: ", e);
+      console.log("Saving failed: ");
     }
   };
 
+  const onSave = async () => {
+    sendPost(true);
+  };
+  const saveDraft = async () => {
+    sendPost(false);
+  };
   return (
     <div className="editor-container">
       <input
-        /* onChange={onTitleChange} */
+        onChange={onTitleChange}
         type="text"
         name="title"
         id="title"
-        placeholder={target.title}
+        placeholder={title}
       />
 
       <textarea
-        /* onInput={onDescChange} */
+        onInput={onDescChange}
         name="description"
         id="description"
         cols="30"
         rows="10"
-        placeholder={target.desc}
+        placeholder={desc}
       ></textarea>
       <EditorJs
         data={target}
         tools={Tools}
-        instanceRef={(editorInstance) => {
+        autofocus={true}
+        instanceRef={async (editorInstance) => {
           // invoked once the editorInstance is ready
-          editor = editorInstance;
+          //still some work here must execute
+
+          try {
+            seteditor(editorInstance);
+            outputData = await editor.save();
+          } catch (error) {
+            console.log("here we have an error of .save() shit");
+          }
         }}
       />
-      <button onClick={onSave}> save </button>
+      <button className="draft" onClick={saveDraft}>
+        save as draft
+      </button>
+      <button className="btn1" onClick={onSave}>
+        PUBLISH
+      </button>
     </div>
   );
 };

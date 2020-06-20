@@ -19,10 +19,13 @@ const Post = (props) => {
   const [User] = user;
   const token = User.token;
   const onDelete = async (e) => {
-    /* axios
-      .delete(`https://mockblog-api.herokuapp.com/api/v1/posts/:${PostId}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      })
+    axios
+      .delete(
+        `http://localhost:5000/api/v1/${User["username"]}/posts/:${PostId}`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      )
       .then((response) => {
         if (response.status === 200) {
           window.location.reload();
@@ -36,7 +39,7 @@ const Post = (props) => {
       })
       .catch((e) => {
         console.log("---------- you've got a 404 problem -----------");
-      }); */
+      });
     console.log("-------------------- post deleted -------------------");
     props.history.push("/seepost");
   };

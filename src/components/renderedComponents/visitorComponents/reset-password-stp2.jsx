@@ -21,7 +21,9 @@ const Reset2 = (props: any) => {
     console.log(token);
 
     axios
-      .get("/login", { headers: { Authorization: `Bearer ${token}` } })
+      .get("http://localhost:5000/api/v1/login", {
+        headers: { Authorization: `Bearer ${token}` },
+      })
       .then((response) => {
         if (response.status === 200) {
           setstepCompleted(true);
@@ -35,7 +37,7 @@ const Reset2 = (props: any) => {
   const sendRegisterRequest = (e) => {
     e.preventDefault();
     axios
-      .post("/api/v1/user/password/reset", {
+      .post("http://localhost:5000/api/v1/user/password/reset", {
         password,
       })
       .then((response) => {

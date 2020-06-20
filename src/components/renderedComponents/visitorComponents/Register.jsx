@@ -56,9 +56,7 @@ const Register = (props: any) => {
   const checkusename = (e) => {
     const target = e.target;
     axios
-      .get(
-        `https://mockblog-api.herokuapp.com/api/v1/register?username=${username}`
-      )
+      .get(`http://localhost:5000/api/v1/register?username=${username}`)
       .then((response) => {
         if (response.status === 200) {
           setnewusername(true);
@@ -87,9 +85,7 @@ const Register = (props: any) => {
     const target = e.target;
     if (/^\w+([-]?\w+)*@\w+([-]?\w+)*(\.\w{2,3})+$/.test(email)) {
       axios
-        .get(
-          `https://mockblog-api.herokuapp.com/api/v1/register?email=${email}`
-        )
+        .get(`http://localhost:5000/api/v1/register?email=${email}`)
         .then((response) => {
           if (response.status === 200) {
             setnewemail(true);
@@ -181,7 +177,7 @@ const Register = (props: any) => {
   const sendRegisterRequest = (e) => {
     e.preventDefault();
     axios
-      .post("https://mockblog-api.herokuapp.com/api/v1/register", {
+      .post("http://localhost:5000/api/v1/register", {
         username,
         email,
         password,

@@ -51,102 +51,56 @@ const Editor = (props) => {
     desc.style.height = desc.scrollHeight + "px";
     /* console.log(e.target.style.height); */
   };
-  const displayData = async () => {
-    /* await editor.save();
-    console.log(editor); */
 
+  const sendPost = async (published) => {
     try {
       outputData = await editor.save();
-      outputData.title = title;
-      outputData.desc = desc;
-      const output = [outputData];
+      /* outputData.title = title;
+      outputData.desc = desc; */
+      /* const output = [outputData];
 
       console.log("Article data: ", output);
       const new_posts_list = output.concat(Posts);
       setPosts(new_posts_list);
-      props.history.push(`/profile/user=:${User["username"]}`);
-      /*  axios
+      props.history.push(`/profile/user=:${User["username"]}`); */
+      axios
         .post(
-          "https://mockblog-api.herokuapp.com/api/v1/posts",
+          `http://localhost:5000/api/v1/${User["username"]}/posts`,
           {
-            user_id: UserContext["_id"],
-            title,
-            desc,
+            title: title,
+            /* desc: desc, */
             body: outputData,
-            tags,
-            published: true,
+            tags: tags,
+            is_published: published,
+            /* category: null, */
           },
           {
             headers: { Authorization: `Bearer ${Token}` },
           }
         )
         .then((response) => {
-          if (response.status === 201) {
+          if (response.status === 200) {
             props.history.push(`/confirm`);
+            setTimeout(() => {
+              props.history.push(`/profile/user=:${User["username"]}`);
+            }, 1600);
           } else {
             alert("there is problem here ");
           }
         })
         .catch((err) => {
-          console.log(err);
-          const area = document.getElementById("error-area");
-          area.innerText = "there a problem";
-          area.style.height = "50px";
-
-          setTimeout(() => {
-            props.history.push("/register");
-          }, 2000);
-        }); */
+          console.log("404 error shit ");
+        });
     } catch (e) {
-      console.log("Saving failed: ", e);
+      console.log("Saving failed: ");
     }
   };
-  const saveDraft = async (e) => {
-    try {
-      outputData = await editor.save();
-      outputData.title = title;
-      outputData.desc = desc;
-      const output = [outputData];
 
-      console.log("Article data: ", output);
-      const new_posts_list = output.concat(Posts);
-      setPosts(new_posts_list);
-      props.history.push(`/profile/user=:${User["username"]}`);
-      /*  axios
-        .post(
-          "https://mockblog-api.herokuapp.com/api/v1/posts",
-          {
-            user_id: UserContext["_id"],
-            title,
-            desc,
-            body: outputData,
-            tags,
-            published: false,
-          },
-          {
-            headers: { Authorization: `Bearer ${Token}` },
-          }
-        )
-        .then((response) => {
-          if (response.status === 201) {
-            props.history.push(`/confirm`);
-          } else {
-            alert("there is problem here ");
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-          const area = document.getElementById("error-area");
-          area.innerText = "there a problem";
-          area.style.height = "50px";
-
-          setTimeout(() => {
-            props.history.push("/register");
-          }, 2000);
-        }); */
-    } catch (e) {
-      console.log("Saving failed: ", e);
-    }
+  const onSave = async () => {
+    sendPost(true);
+  };
+  const saveDraft = async () => {
+    sendPost(false);
   };
   const handleTagsChange = async (tagsChanged, allTags, action) => {
     settags(await allTags);
@@ -197,7 +151,7 @@ const Editor = (props) => {
         <button className="draft" onClick={saveDraft}>
           save as draft
         </button>
-        <button className="btn1" onClick={displayData}>
+        <button className="btn1" onClick={onSave}>
           PUBLISH
         </button>
       </div>
