@@ -11,7 +11,7 @@ import orange_Ellipse from "./resources/shapes/orange_Ellipse.svg";
 import outline_rectangle from "./resources/shapes/outline_rectangle.svg";
 
 /* useEffect(() => {
-  const token = window.localStorage.getItem("user");
+  const token = window.localStorage.getItem("mockblogtoken");
   axios
     .post("/login", { headers: {"Authorization" : `Bearer ${token}`} })
     .then((response) => {
@@ -23,33 +23,10 @@ import outline_rectangle from "./resources/shapes/outline_rectangle.svg";
 
 /*  token in the header  */
 
-type Info = {
-  id: number,
-  username: string,
-  nickname: string, //added
-  email: string,
-  password: string,
-  is_active: Boolean,
-  is_blogger: Boolean,
-  profile: {
-    firstname: string,
-    lastname: string,
-    date_of_birth: string,
-    bio: string,
-    followers: any,
-    follows: any, //added
-    posts: any,
-    specializations: any,
-  },
-  created_at: string,
-  updated_at: string,
-  token: string, //added
-};
-
 const Login = (props: any) => {
   /* states declaration */
   const { user, islogged, token } = useContext(UserContext);
-  const [userInfo: Info, setuserInfo: Function] = user;
+  const [userInfo, setuserInfo] = user;
   const [logged: Boolean, setlogged: Function] = islogged;
   const [Token, setToken] = token;
   const [username: string, setusername] = useState("");

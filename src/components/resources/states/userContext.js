@@ -28,6 +28,7 @@ export const UserProvider = (props) => {
     created_at: "",
     updated_at: "",
   });
+  const [Target, setTarget] = useState({});
   const [Posts, setPosts] = useState([]);
   return (
     <UserContext.Provider
@@ -36,6 +37,7 @@ export const UserProvider = (props) => {
         islogged: [islogged, setislogged],
         token: [Token, setToken],
         posts: [Posts, setPosts],
+        target: [Target, setTarget],
       }}
     >
       {props.children}

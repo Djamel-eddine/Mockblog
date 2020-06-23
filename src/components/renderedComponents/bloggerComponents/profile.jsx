@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../resources/states/userContext";
 import { Link } from "react-router-dom";
 import Post from "./Post";
-import "./style/css/myprofile.css";
+import "./style/myprofile.scss";
 
 //images and shapes
 import profile_pic from "../../resources/images/profile.png";
@@ -11,8 +11,9 @@ import outline_rectangle from "./resources/shapes/outline_rectangle.svg";
 import axios from "axios";
 
 const Profile = (props) => {
-  const { user, posts } = useContext(UserContext);
+  const { user, posts, token } = useContext(UserContext);
   const [userInf] = user;
+  const [Token, setToken] = token;
   const [Posts, setPosts] = posts;
   const [savedPosts, setsavedPosts] = useState([]);
   const [showSavedPosts, setshowSavedPosts] = useState(false);
@@ -22,11 +23,16 @@ const Profile = (props) => {
     console.log(
       "----------------------- reload again ---------------------------"
     );
+    console.log(Token);
     axios
-      .get(`http://localhost:5000/api/v1/${userInf["username"]}/posts`)
+      .get(`http://localhost:5000/api/v1/${userInf["username"]}/posts`, {
+        headers: { Authorization: `Bearer ${Token}` },
+      })
       .then((response) => {
         if (response.status === 200) {
-          setPosts(response.msgs.Posts);
+          setPosts(response.data.msgs.posts);
+
+          console.log(response.data.msgs.posts);
         } else {
           alert(response.msgs);
         }
@@ -95,7 +101,7 @@ const Profile = (props) => {
               ? savedPosts.map((post, i) => (
                   <Post
                     key={i}
-                    id={post["post_id"]}
+                    id={post["_id"]}
                     title={post.title}
                     desc={post.desc}
                     history={props.history}
@@ -104,7 +110,7 @@ const Profile = (props) => {
               : Posts.map((post, i) => (
                   <Post
                     key={i}
-                    id={post["post_id"]}
+                    id={post["_id"]}
                     title={post.title}
                     desc={post.desc}
                     history={props.history}

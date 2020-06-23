@@ -82,13 +82,15 @@
     margin: 2px;
     input {
       width: auto !important;
-      border: solid 1px $info-color !important;
-      background-color: $info-color;
+      border: none !important;
+      background-color: rgb(187, 187, 187);
       border-right-width: 0px !important;
       height: 30px !important;
 
       border-radius: 5px 0px 0px 5px;
       padding: 5px;
+      font-family: $links-font;
+
       &:focus {
         background-color: white;
       }

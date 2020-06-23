@@ -17,9 +17,8 @@
   .blocksContainer {
     display: grid;
     place-items: center center;
+
     .postBlocks {
-      display: flex;
-      box-sizing: border-box;
       padding: 50px;
       width: 80%;
       @for $var from 1 to 6 {

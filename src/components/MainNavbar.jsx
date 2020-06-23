@@ -9,7 +9,7 @@ import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon as Icon } from "@fortawesome/react-fontawesome";
 
 /* import { FontAwesomeIcon as Icon } from "@fortawesome/react-fontawesome"; */
-import "./style/css/main_navbar.css";
+import "./style/main_navbar.scss";
 
 //imporat icons and images
 import searchicon from "./resources/images/search.png";
@@ -21,7 +21,7 @@ const MainNavbar = (props) => {
   const { user, islogged, token } = useContext(UserContext);
   const [userInf] = user;
   const [logged, setlogged] = islogged;
-  const [Token] = token;
+  const [Token, setToken] = token;
 
   const onTrigger = (e) => {
     /* const list = document.getElementsByClassName("navigation_menu");
@@ -104,22 +104,23 @@ const MainNavbar = (props) => {
   /* logout methode */
   const logout = (e) => {
     console.log("token: ", Token);
-
     axios
-      .post("http://localhost:5000/api/v1/logout", {
-        headers: {
-          Authorization: `Bearer ${Token}`,
-        },
-      })
+      .post(
+        "http://localhost:5000/api/v1/logout",
+        {},
+        {
+          headers: { Authorization: `Bearer ${Token}` },
+        }
+      )
       .then((response) => {
+        console.log(response);
+
         if (response.status === 201) {
-          setlogged("false");
-          const propnav = document.getElementsByClassName("props");
-          propnav[0].classList.toggle("prop-list");
+          setlogged(false);
         }
       })
       .catch((e) => {
-        console.log("there is a problem with logout");
+        console.log("there is a problem with logout: ", e);
       });
     /* setlogged(!logged); */
   };

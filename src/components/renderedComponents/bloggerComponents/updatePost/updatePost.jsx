@@ -2,30 +2,21 @@ import React, { useState, useContext, useEffect } from "react";
 import EditorJs from "react-editor-js";
 import { UserContext } from "../../../resources/states/userContext";
 import { Tools } from "../postEditor/tools";
-import "../postEditor/css/editor.css";
+import "../postEditor/editor.scss";
 import axios from "axios";
+import TagEditor from "react-tageditor";
 
 const UpdatePost = (props) => {
-  const { posts, token, user } = useContext(UserContext);
-  const [Posts, setPosts] = posts;
-  const [Token, setToken] = token;
-  const [User, setUser] = user;
+  const { token, user, target } = useContext(UserContext);
+  const [Token] = token;
+  const [User] = user;
   const [editor, seteditor] = useState("");
   const id = props.id;
   let outputData = [];
-  const [target, settarget] = useState({});
-  const [desc, setdesc] = useState(target.desc);
-  const [title, settitle] = useState(target.title);
-  useEffect(() => {
-    axios
-      .get(`http://localhost:5000/api/v1/${User["username"]}/posts/${id}`)
-      .then((response) => {
-        settarget(response.msgs.Post);
-      })
-      .catch((e) => {
-        console.log("problem occure when try retrieving the post");
-      });
-  }, []);
+  const [Target] = target;
+  const [desc, setdesc] = useState("description");
+  const [title, settitle] = useState(Target.title);
+  const [tags, settags] = useState(Target.tags);
 
   const onDescChange = (e) => {
     setdesc(e.target.value);
@@ -39,41 +30,79 @@ const UpdatePost = (props) => {
   const sendPost = async (published) => {
     try {
       outputData = await editor.save();
-      outputData.title = title;
-      outputData.desc = desc;
-      /* const output = [outputData];
+      const data = {
+        title: title,
+        description: desc,
+        body: JSON.stringify(outputData),
+        tags: ["tags"],
+        is_published: published,
+        /* category: null, */
+      };
+      console.log(data);
+      const url = `http://localhost:5000/api/v1/${User["username"]}/posts/${id}`;
 
-      console.log("Article data: ", output);
-      const new_posts_list = output.concat(Posts);
-      setPosts(new_posts_list);
-      props.history.push(`/profile/user=:${User["username"]}`); */
-      axios
-        .put(
-          `http://localhost:5000/api/v1/${User["username"]}/posts/${target["post_id"]}`,
-          {
-            Title: title,
-            Desc: desc,
-            Body: outputData,
-            Tags: target.tags,
-            Published: published,
-          },
-          {
-            headers: { Authorization: `Bearer ${Token}` },
-          }
-        )
-        .then((response) => {
-          if (response.status === 200) {
-            props.history.push(`/confirm`);
-            setTimeout(() => {
-              props.history.push(`/profile/user=:${User["username"]}`);
-            }, 1600);
-          } else {
-            alert("there is problem here ");
-          }
-        })
-        .catch((err) => {
-          console.log("404 error shit ");
-        });
+      let req = {
+        url,
+        method: "PUT",
+        data: JSON.stringify(data),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8", // Indicates the content
+          authorization: `Bearer ${Token}`,
+        },
+      };
+      axios(req).then((response) => {
+        if (response.status === 200) {
+          props.history.push("/confirm");
+          setTimeout(() => {
+            props.history.push(`/profile/user=${User["username"]}`);
+          }, 1000);
+        } else {
+          console.log("not saver status: ", response.status);
+        }
+      });
+
+      /* const putMethod = {
+        method: "PUT", // Method itself
+        headers: {
+          "Content-type": "application/json; charset=UTF-8", // Indicates the content
+          authorization: `Bearer ${Token}`,
+        },
+        body: JSON.stringify(data), // We send data in JSON format
+      };
+
+      const res = await fetch(
+        `http://localhost:5000/api/v1/${User["username"]}/posts/${target["post_id"]}`,
+        putMethod
+      );
+      console.log(res); */
+
+      /* .then((response) => console.log(response.json()))
+        .then((data) => console.log("data here: ", data))
+        .catch((err) => console.log(err)); // Do something with the error */
+
+      /* const requestOptions = {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          authorization: `Bearer ${Token}`,
+        },
+        body: JSON.stringify(data),
+      };
+      fetch(
+        `http://localhost:5000/api/v1/${User["username"]}/posts/${target["post_id"]}`,
+        requestOptions
+      ).then((response) => {
+        /* if (response.status === 201) {
+          props.history.push("/consirm");
+          setTimeout(() => {
+            props.history.push(`/profile/user=${User["username"]}`);
+          }, 1000);
+        } else {
+          console.log("not saver status: ", response.status);
+        } 
+        console.log(response);
+        console.log("here");
+      }); */
     } catch (e) {
       console.log("Saving failed: ");
     }
@@ -85,6 +114,9 @@ const UpdatePost = (props) => {
   const saveDraft = async () => {
     sendPost(false);
   };
+  const handleTagsChange = async (tagsChanged, allTags, action) => {
+    settags(await allTags);
+  };
   return (
     <div className="editor-container">
       <input
@@ -92,7 +124,7 @@ const UpdatePost = (props) => {
         type="text"
         name="title"
         id="title"
-        placeholder={title}
+        placeholder={Target.title}
       />
 
       <textarea
@@ -104,7 +136,7 @@ const UpdatePost = (props) => {
         placeholder={desc}
       ></textarea>
       <EditorJs
-        data={target}
+        data={JSON.parse(Target.body)}
         tools={Tools}
         autofocus={true}
         instanceRef={async (editorInstance) => {
@@ -119,12 +151,20 @@ const UpdatePost = (props) => {
           }
         }}
       />
-      <button className="draft" onClick={saveDraft}>
-        save as draft
-      </button>
-      <button className="btn1" onClick={onSave}>
-        PUBLISH
-      </button>
+      <TagEditor
+        tags={tags}
+        delimiters={[13, ","]}
+        placeholder="add tags..."
+        onChange={handleTagsChange}
+      />
+      <div className="save">
+        <button className="draft" onClick={saveDraft}>
+          save as draft
+        </button>
+        <button className="btn1" onClick={onSave}>
+          PUBLISH
+        </button>
+      </div>
     </div>
   );
 };

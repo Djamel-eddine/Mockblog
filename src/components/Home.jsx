@@ -30,8 +30,9 @@ import SeePost from "./renderedComponents/bloggerComponents/postEditor/seePosts.
 import { UserContext } from "./resources/states/userContext";
 
 const Home = (props) => {
-  const { islogged } = useContext(UserContext);
+  const { islogged, target } = useContext(UserContext);
   const [logged] = islogged;
+  const [Target] = target;
 
   return (
     <Router>
@@ -59,7 +60,7 @@ const Home = (props) => {
         />
         <Route
           path="/post/post_id=:id"
-          /* component={logged ? post : Main} */ render={(props) => {
+          render={(props) => {
             const postId = props.location.pathname.replace(
               "/post/post_id=",
               ""
@@ -68,7 +69,7 @@ const Home = (props) => {
             if (logged === false) {
               return <Main />;
             } else {
-              return <Article id={postId} history={history} />;
+              return <Article id={postId} history={history} target={Target} />;
             }
           }}
         />
@@ -86,8 +87,9 @@ const Home = (props) => {
         <Route
           path="/update_post/id=:id"
           render={(props) => {
+            const history = props.history;
             const id = props.location.pathname.replace("/update_post/id=", "");
-            return <UpdatePost id={id} />;
+            return <UpdatePost history={history} id={id} target={Target} />;
           }}
         />
         <Route path="/seepost" component={SeePost} />
